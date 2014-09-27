@@ -27,4 +27,3 @@
 
 (defn -main []
   (server/run-server (handler/api application) {:port 5000}))
->>>>>>> Add basic routing and embedded server
