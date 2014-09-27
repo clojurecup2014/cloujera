@@ -1,1 +1,1 @@
-Hello Clojrue Cup 2014
+Hello Clojure Cup 2014
