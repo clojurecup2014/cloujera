@@ -8,6 +8,8 @@
                  [prismatic/schema "0.3.0"]
                  [http-kit "2.1.16"]
 
+                 [clj-http "1.0.0"] ;; for http getting and cookieing
+
                  [enlive "1.1.5"] ;; for scraping
 
                  [compojure "1.1.9"] ;; for routing
