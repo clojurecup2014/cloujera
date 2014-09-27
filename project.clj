@@ -4,6 +4,7 @@
 
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/clojurescript "0.0-2311"]
+                 [om "0.7.1"]
 
                  [prismatic/schema "0.3.0"]
                  [compojure "1.1.9"] ;; for routing
