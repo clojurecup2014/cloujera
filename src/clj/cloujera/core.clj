@@ -1,26 +1,15 @@
 (ns cloujera.core
-  (:require [cloujera.burglar.core :as burglar]))
+  (:gen-class)
+  (:require [org.httpkit.server :as server]
+            [compojure.route :as route]
+            [compojure.handler :as handler]
+            [compojure.core :refer (GET defroutes)]
+            [ring.util.response :as ring]))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(def username "vise890+cloujera@gmail.com")
-(def password "letswinthisthing")
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defroutes application
+  (GET  "/" [] (ring/resource-response "index.html" {:root "public"}))
+  (route/resources "/")
+  (route/not-found "Keep movin', there ain't nothin' to see here."))
 
-(defn- coursera-urls []
-  ["https://class.coursera.org/modernpoetry-003/lecture"
-   "https://class.coursera.org/comparch-003/lecture"
-   "https://class.coursera.org/algs4partI-006/lecture"
-   "https://class.coursera.org/calcsing-006/lecture"
-   "https://class.coursera.org/automata-003/lecture"
-   "https://class.coursera.org/crypto-012/lecture"
-   "https://class.coursera.org/ml-007/lecture"
-   ])
-
-(def get-lectures-page (burglar/authenticated-get username password))
-
-(->> (coursera-urls)
-     (map get-lectures-page)
-     (map :body))
-
-
-
+(defn -main []
+  (server/run-server (handler/api application) {:port 5000}))
