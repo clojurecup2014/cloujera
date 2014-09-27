@@ -11,12 +11,23 @@
   (:body (http/get url)))
 (def cached-http-get (cache/persist get-body))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; UTLIS
+(defn- video-_link->lecture-url [video-_link]
+  (->> (string/split video-_link #"/")
+       (butlast)
+       (string/join "/")))
 
-(cached-http-get "http://www.google.co.uk")
+(defn- video-_link->id [video-_link] (last (string/split video-_link #"/")))
+
+(defn video-_link->embedded-video-url [video-_link]
+  (let [video-id (video-_link->id video-_link)
+        lecture-url (video-_link->lecture-url video-_link)]
+    (str  lecture-url "/view?lecture_id=" video-id)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; COURSE
-
 (defn- get-course-_link [h]
   (let [attr :data-lecture-coursebase
         tag (html/select h [:div (html/attr-has attr)])
@@ -50,21 +61,12 @@
         :attrs
         :href)))
 
-;; TODO: neet to http/get the video._link
-(defn- video-_link->url [video-_link])
-
 (defn- video-list-item->title [video-list-item]
   (-> (html/select video-list-item [:a.lecture-link])
       first
       :content
       first
       string/trim))
-
-(defn- video-_link->id [video-_link] (last (string/split video-_link #"/")))
-(defn- video-_link->lecture-url [video-_link]
-  (->> (string/split video-_link #"/")
-       (butlast)
-       (string/join "/")))
 
 (defn- video-_link->transcript-url [video-_link]
   (let [id (video-_link->id video-_link)
@@ -82,8 +84,18 @@
   (let [_link (video-list-item->_link video-list-item)]
      {:id (video-_link->id _link)
       :title (video-list-item->title video-list-item)
-      :transcript (cached-http-get (video-_link->transcript-url _link))
+      ;:transcript (cached-http-get (video-_link->transcript-url _link))
       :_link _link}))
+
+
+;;;; URL
+(defn extract-video-url [html]
+  (let [html-soup (html/html-snippet html)
+        tag (html/select html-soup [:source (html/attr-contains :type "video/webm")])]
+     (-> tag
+         first
+         :attrs
+         :src)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
