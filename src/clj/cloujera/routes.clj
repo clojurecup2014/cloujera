@@ -1,6 +1,5 @@
 (ns cloujera.routes
   (:require [compojure.route :as route]
-            [compojure.handler :as handler]
             [compojure.core :refer (GET defroutes)]
             [ring.util.response :as ring]
             [cloujera.controllers.scrounger :as scrounger]))
