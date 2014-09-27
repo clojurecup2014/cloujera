@@ -1,10 +1,18 @@
 (ns cloujera.burglar.parser
   (:require [cloujera.models.video :as video]
+            [cloujera.cache.core :as cache]
             [clojure.string :as string]
             [schema.core :as schema]
             [clj-http.client :as http]
             [net.cgrand.enlive-html :as html]))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn get-body [url]
+  (:body (http/get url)))
+(def cached-http-get (cache/persist get-body))
+
+
+(cached-http-get "http://www.google.co.uk")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; COURSE
@@ -36,22 +44,21 @@
 ;;; VIDEO
 
 (defn- video-list-item->_link [video-list-item]
-  (-> video-list-item
-      :content
-      first ;; the first element is the anchor with the link
-      :attrs
-      :href))
+  (let [tag (html/select video-list-item [:a.lecture-link])]
+    (-> tag
+        first
+        :attrs
+        :href)))
 
 ;; TODO: neet to http/get the video._link
 (defn- video-_link->url [video-_link])
 
 (defn- video-list-item->title [video-list-item]
-  (-> video-list-item
-      :content
+  (-> (html/select video-list-item [:a.lecture-link])
       first
       :content
       first
-      (string/trim)))
+      string/trim))
 
 (defn- video-_link->id [video-_link] (last (string/split video-_link #"/")))
 (defn- video-_link->lecture-url [video-_link]
@@ -65,7 +72,7 @@
     (str lecture-url "/subtitles?q=" id "_en&format=txt")))
 
 (defn- transcript-exists? [video-list-item]
-    (html/any-node video-list-item [(html/attr-contains :href "subtitle")]))
+    (not (empty? (html/select video-list-item [(html/attr-contains :href "subtitle")]))))
 
 (defn- needed? [video-list-item]
     (transcript-exists? video-list-item))
@@ -75,21 +82,9 @@
   (let [_link (video-list-item->_link video-list-item)]
      {:id (video-_link->id _link)
       :title (video-list-item->title video-list-item)
-      :transcript (:body (http/get (video-_link->transcript-url _link)))
-      :video-url (video-_link->url _link)
+      :transcript (cached-http-get (video-_link->transcript-url _link))
       :_link _link}))
 
-;;; TEST
-;;; TEST
-;(def course-html (slurp "resources/fixtures/course.html"))
-;(def html-soup (html/html-snippet course-html))
-;; (extract-course html-soup)
-;(-> (extract-video-list html-soup)
- ;   (first)
-  ;  (video-list-item->video))
-
-(defn extract-video-url [h]
-  "foo")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; VIDEOS
@@ -105,7 +100,7 @@
 (defn extract-videos [html]
   (let [html-soup (html/html-snippet html)
         video-list (extract-video-list html-soup)]
-    (println "Shit my soiled pants...")
-    (->> (filter needed? video-list)
+    (->> video-list
+         (filter needed?)
          (map video-list-item->video))))
 
