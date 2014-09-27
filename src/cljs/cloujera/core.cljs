@@ -1,6 +1,7 @@
 (ns cloujera.core
   (:require [om.core :as om :include-macros true]
-            [om.dom :as dom :include-macros true]))
+            [om.dom :as dom :include-macros true]
+            [cloujera.rest-client :as rest-client]))
 
 (enable-console-print!)
 
@@ -14,11 +15,16 @@
 (defn handle-input [e owner {:keys [text]}]
   (om/set-state! owner :text (.. e -target -value)))
 
+(defn process-response [response]
+  (println (str "Search results: " response)))
+
+
 (defn search [app owner]
   (let [input (om/get-node owner "search-query")
         search-query (-> input .-value)]
     (when search-query
-      (println (str "Search query=" search-query)))))
+      (println (str "Search query=" search-query))
+      (rest-client/search search-query process-response))))
 
 
 ;; search bar component
