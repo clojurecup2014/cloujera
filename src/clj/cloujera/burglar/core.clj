@@ -2,12 +2,6 @@
   (:require [clj-http.client :as http]
             [clj-http.cookies :as cookies]))
 
-;; Username -> Password -> (ProtectedUrl -> Page)
-(defn authenticated-get [username password]
-  (let [authenticated-cs (authenticated-cookie-store username password)]
-    (fn [protected-url]
-      (http/get protected-url {:cookie-store authenticated-cs}))))
-
 ;; inspiration from: https://github.com/coursera-dl/coursera/blob/master/coursera%2Fcookies.py
 (defn- authenticated-cookie-store
   "returns a cookie store that lets you get protected pages"
@@ -33,3 +27,9 @@
                             :form-params  data
                             :cookie-store cs})
       cs)))
+
+;; Username -> Password -> (ProtectedUrl -> Page)
+(defn authenticated-get [username password]
+  (let [authenticated-cs (authenticated-cookie-store username password)]
+    (fn [protected-url]
+      (http/get protected-url {:cookie-store authenticated-cs}))))

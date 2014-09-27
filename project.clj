@@ -8,6 +8,7 @@
                  [prismatic/schema "0.3.0"]
                  [compojure "1.1.9"] ;; for routing
                  [ring "1.3.1"]
+                 [ring/ring-json "0.2.0"]
                  [http-kit "2.1.19"]
 
                  [clj-http "1.0.0"] ;; for http getting and cookieing
