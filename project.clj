@@ -11,9 +11,10 @@
                  [enlive "1.1.5"] ;; for scraping
 
                  [compojure "1.1.9"] ;; for routing
+                 [cheshire "5.3.1"] ;; for serializing
 
                  [clojurewerkz/elastisch "2.1.0-beta7"] ;; for persitance
-                 [com.taoensso/carmine "2.7.0"]] ;; for caching
+                 [com.taoensso/carmine "2.7.0" :exclusions [org.clojure/clojure]]] ;; for caching
 
 
   :plugins [[lein-cljsbuild "1.0.4-SNAPSHOT"]]
