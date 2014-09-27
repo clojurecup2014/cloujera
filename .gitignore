@@ -1,4 +1,5 @@
 pom.xml
+*.js
 *jar
 /lib/
 /classes/
