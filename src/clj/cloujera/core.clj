@@ -1,15 +1,13 @@
 (ns cloujera.core
   (:gen-class)
   (:require [org.httpkit.server :as server]
-            [compojure.route :as route]
             [compojure.handler :as handler]
-            [compojure.core :refer (GET defroutes)]
-            [ring.util.response :as ring]))
+            [ring.middleware.json :as middleware]
+            [cloujera.routes :as routes]))
 
-(defroutes application
-  (GET  "/" [] (ring/resource-response "index.html" {:root "public"}))
-  (route/resources "/")
-  (route/not-found "Keep movin', there ain't nothin' to see here."))
+(def app
+  (-> (handler/site routes/app-routes)
+      (middleware/wrap-json-response)))
 
 (defn -main []
-  (server/run-server (handler/api application) {:port 5000}))
+  (server/run-server app {:port 80}))
