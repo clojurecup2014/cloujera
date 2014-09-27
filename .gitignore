@@ -1,9 +1,9 @@
 pom.xml
-*.js
 *jar
 /lib/
 /classes/
-/out/
+/resources/public/js/cloujera.js
+/resources/public/js/out
 /target/
 .lein-deps-sum
 .lein-repl-history
