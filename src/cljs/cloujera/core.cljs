@@ -5,8 +5,6 @@
 
 (enable-console-print!)
 
-(println "Hello world!")
-
 
 (def app-state
   (atom
