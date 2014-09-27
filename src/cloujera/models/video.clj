@@ -1,4 +1,4 @@
-(ns coujera.models.video
+(ns cloujera.models.video
   (:require [schema.core :as s]))
 
 (def fake-video
