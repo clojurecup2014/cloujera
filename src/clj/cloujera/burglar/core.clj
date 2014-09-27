@@ -1,7 +1,9 @@
 (ns cloujera.burglar.core
   (:require [cloujera.burglar.scraper :as scraper]
             [cloujera.cache.core :as cache]
-            [cloujera.burglar.parser :as parser]))
+            [cloujera.burglar.parser :as parser]
+            [cloujera.models.video :as video]
+            [schema.core :as schema]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (def username "vise890+cloujera@gmail.com")
@@ -24,11 +26,13 @@
   (let [embedded-video-url (parser/video-_link->embedded-video-url (:_link video))
         embedded-video-page (get-coursera-page embedded-video-url)
         url (parser/extract-video-url embedded-video-page)]
-    (assoc video :url url)))
+    (assoc video :video-url url)))
 
 ;; THE BEAST
 (->> (coursera-urls)
      (map get-coursera-page)
      (map parser/extract-videos)
      (flatten)
-     (map add-video-url))
+     (map add-video-url)
+     (remove #(nil? (:video-url %)))
+     (map #(schema/validate video/Video %)))
