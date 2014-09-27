@@ -1,8 +1,7 @@
 (ns cloujera.cache.core
   (:require [taoensso.carmine :as redis]))
 
-
-(defn red-cache [f]
+(defn persist [f]
   (fn [k]
     (let [cached-val (redis/wcar {} (redis/get k))]
          (if (nil? cached-val)

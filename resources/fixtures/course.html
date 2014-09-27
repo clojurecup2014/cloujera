@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)https://class.coursera.org/susdev-002/lecture -->
+<html xmlns:fb="http://ogp.me/ns/fb#" itemtype="http://schema.org" class="supports-svg"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE7"><meta name="fragment" content="!"><meta name="robots" content="NOODP"><meta charset="utf-8"><meta property="og:title" content="Coursera"><meta property="og:type" content="website"><meta property="og:image" content="http://s3.amazonaws.com/coursera/media/Coursera_Computer_Narrow.png"><meta property="og:url" content="https://www.coursera.org/lecture"><meta property="og:site_name" content="Coursera"><meta property="og:locale" content="en_US"><meta property="og:description" content="Take free online classes from 80+ top universities and organizations. Coursera is a social entrepreneurship company partnering with Stanford University, Yale University, Princeton University and others around the world to offer courses online for anyone to take, for free. We believe in connecting people to a great education so that anyone around the world can learn without limits."><meta property="fb:admins" content="727836538,4807654"><meta property="fb:app_id" content="274998519252278"><meta name="twitter:site" content="Coursera"><meta name="twitter:app:name:iphone" content="Coursera"><meta name="twitter:app:name:ipad" content="Coursera"><meta name="twitter:app:name:googleplay" content="Coursera"><meta name="twitter:app:id:iphone" content="id736535961"><meta name="twitter:app:id:ipad" content="id736535961"><meta name="twitter:app:id:googleplay" content="org.coursera.android"><meta name="description" content="Take free online classes from 80+ top universities and organizations. Coursera is a social entrepreneurship company partnering with Stanford University, Yale University, Princeton University and others around the world to offer courses online for anyone to take, for free. We believe in connecting people to a great education so that anyone around the world can learn without limits."><meta name="image" content="http://s3.amazonaws.com/coursera/media/Coursera_Computer_Narrow.png"><meta name="apple-itunes-app" content="app-id=736535961"><title> | Coursera</title>    <link href="./course_files/spark.main.css" rel="stylesheet" type="text/css">
+      <link href="./course_files/course.css" rel="stylesheet" type="text/css">
+    <link href="https://spark-public.s3.amazonaws.com/susdev/static/images/favicon.ico" rel="icon">
+<style type="text/css"></style><link rel="stylesheet" type="text/css" href="chrome-extension://pkehgijcmpdhfbdbbnkijodmdjhbjlgp/skin/socialwidgets.css"><script type="text/javascript" async="" src="./course_files/ga.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="pages/spark/routes" src="./course_files/routes.js"></script><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Coursera"><meta name="twitter:description" content="Take free online classes from 80+ top universities and organizations. Coursera is a social entrepreneurship company partnering with Stanford University, Yale University, Princeton University and others around the world to offer courses online for anyone to take, for free. We believe in connecting people to a great education so that anyone around the world can learn without limits."><meta name="twitter:image:src" content="http://s3.amazonaws.com/coursera/media/Coursera_Computer_Narrow.png"><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="js/lib/204" src="./course_files/204.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="js/lib/400" src="./course_files/400.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="pages/spark/views/template/student-page" src="./course_files/student-page.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="spark/app/lecture/js/lecture_list_functions" src="./course_files/lecture_list_functions.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="pages/spark/views/template/student-page.html" src="./course_files/student-page.html.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="bundles/assess/assessmentTypes/sparkSurveyQuestions/sparkSurveyQuestionsSessionModel" src="./course_files/sparkSurveyQuestionsSessionModel.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="spark/app/generic/js/video_modal" src="./course_files/video_modal.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="spark/app/generic/js/item_list" src="./course_files/item_list.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="spark/core/js/jquery.history" src="./course_files/jquery.history.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="js/lib/bootstrap.tooltip" src="./course_files/bootstrap.tooltip.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="pages/spark/views/template/nls/student-page" src="./course_files/student-page(1).js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="bundles/assess/assessmentTypes/quickQuestions/sessionModel" src="./course_files/sessionModel.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="spark/core/js/modal_focus" src="./course_files/modal_focus.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="bundles/assess/assessmentTypes/SessionModel" src="./course_files/sessionModel(1).js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="bundles/assess/framework/QuestionCollection" src="./course_files/QuestionCollection.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="bundles/assess/framework/QuestionModel" src="./course_files/QuestionModel.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="bundles/assess/lib/backbone.hascollections" src="./course_files/backbone.hascollections.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="js/lib/underscore.extend" src="./course_files/underscore.extend.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="pages/spark/views/template/header" src="./course_files/header.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="pages/spark/views/template/sidebar" src="./course_files/sidebar.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="js/lib/readme" src="./course_files/readme.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="pages/spark/views/template/header.html" src="./course_files/header.html.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="pages/spark-survey/assessApi" src="./course_files/assessApi.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="pages/spark/views/template/sidebar.html" src="./course_files/sidebar.html.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="spark/app/signature/js/signature_track" src="./course_files/signature_track.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="pages/help-center/data/HelpCenterLinks" src="./course_files/HelpCenterLinks.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="pages/spark/views/template/nls/header" src="./course_files/header(1).js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="pages/spark/views/template/nls/sidebar" src="./course_files/sidebar(1).js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="js/vendor/jade" src="./course_files/jade.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="spark/app/signature/js/signatureTrackLastChanceModal.html" src="./course_files/signatureTrackLastChanceModal.html.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="spark/app/signature/js/flexjoinLastChanceModal.html" src="./course_files/flexjoinLastChanceModal.html.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="js/lib/util" src="./course_files/util.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="js/lib/path" src="./course_files/path.js"></script></head><body><div id="fb-root"></div><div id="spark-help" class="hide"></div><a href="http://help.coursera.org/customer/widget/emails/new" target="_blank"><div style="z-index: 1" data-networkprioritysupportwidget="" role="button" class="helpwidget-tab hide">Premium Support</div></a><div id="origami"><div><div><div class="coursera-page"><div role="menubar" class="coursera-header"><div class="hidden">This page features MathJax technology to render mathematical formulae.
+If you are using a screen reader, please visit <a href="http://www.dessci.com/en/products/mathplayer/">MathPlayer</a> to download the plugin for your browser. Please note that this is an Internet Explorer-only plugin at this time.</div><h1 class="hidden">The Age of Sustainable Development</h1><!-- UNTIL dashboard announcement expires 2014-08-31 (then delete this code)--><div role="banner" class="course-topbar container-fluid"><div class="row-fluid"><div class="span3"><a href="https://www.coursera.org/" data-if-linkable="add-referrer" class="course-topbar-logo"></a></div><div style="float:right;" class="course-topbar-nav-container span9"><h2 class="hidden">Top Navigation Bar</h2><ul class="course-topbar-nav-list"><li class="course-topbar-nav-list-item"><a href="https://www.coursera.org/courses" data-if-linkable="add-referrer">Courses</a></li><li tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-owns="course-topbar-my" data-popup="#course-topbar-my" data-popup-bind-open="mouseenter" data-popup-close="data-popup-close" style="cursor:pointer;" data-popup-direction="se" class="course-topbar-nav-list-item"><a data-user-id="9583179">Cloujera <i class="icon-caret-down"></i></a></li></ul></div></div><div id="course-topbar-aboutus" class="course-topbar-sublist"><a href="https://www.coursera.org//about/" target="_new" data-if-linkable="add-referrer" class="internal-about course-topbar-sublist-item">About Us</a><a href="https://www.coursera.org//about/careers" target="_new" data-if-linkable="add-referrer" class="internal-about course-topbar-sublist-item">Careers</a><a href="https://www.coursera.org//about/people" target="_new" data-if-linkable="add-referrer" class="internal-about course-topbar-sublist-item">People</a><a href="https://www.coursera.org//about/contact" target="_new" data-if-linkable="add-referrer" class="internal-about course-topbar-sublist-item">Contact Us</a></div><div id="course-topbar-my" class="course-topbar-sublist"><a data-popup-close="data-popup-close" href="https://www.coursera.org/" target="_new" class="course-topbar-sublist-item">My Courses</a><a data-popup-close="data-popup-close" href="https://www.coursera.org/account/profile" target="_new" class="course-topbar-sublist-item">Profile</a><a data-popup-close="data-popup-close" href="https://www.coursera.org/account/records" target="_new" class="course-topbar-sublist-item">Course Records</a><a href="https://www.coursera.org/account/settings" target="_new" class="course-topbar-sublist-item">Settings</a><a href="https://class.coursera.org/susdev-002/class/preferences" class="course-topbar-sublist-item">Course Preferences</a><a href="https://class.coursera.org/susdev-002/auth/logout" class="course-topbar-sublist-item">Sign Out</a></div></div><div class="course-topbanner-wrapper"><div class="course-topbanner"><div class="course-topbanner-university-logo"><a href="https://www.coursera.org/columbia" target="_blank" data-if-linkable="add-referrer" title="https://www.coursera.org/columbia" class="coursera-university-color"><img src="./course_files/university_logo" alt="columbia"></a></div><h1 class="course-topbanner-header"><a href="https://class.coursera.org/susdev-002/" data-if-linkable="modal-lock" class="course-topbanner-name coursera-university-color">The Age of Sustainable Development</a><br><span style="" class="course-topbanner-instructor">by Jeffrey Sachs</span></h1></div></div></div><div style="position:relative;" class="container-fluid"><div class="row-fluid"><div id="course-page-sidebar" role="navigation"><div role="menubar" class="coursera-sidebar"><div id="course-page-sidebar" role="navigation"><div class="course-navbar-container"><a href="https://class.coursera.org/susdev-002" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="navclick_index"><img src="./course_files/logo" style="width: 205px;height: 116px;margin: -15px 0px 8px 1px; box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);" alt="Course Home Page"></a><div data-coursera-course-search-nav-widget="data-coursera-course-search-nav-widget" class="input-append course-search-nav-box"><form method="get" action="https://class.coursera.org/susdev-002/class/search" data-js-search-form="data-js-search-form" class="form-inline minimized-search"><label for="course-search-nav-input" class="accessible-text-for-reader">Search this course</label><input id="course-search-nav-input" type="text" name="q" data-js-search-input="data-js-search-input">&nbsp;<button type="submit" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="search" class="btn icon-search"><span class="accessible-text-for-reader">Search</span></button></form></div><h2 class="hidden">Side Navigation Bar</h2><ul class="course-navbar-list"><li class="course-navbar-item"><h3>Course Information</h3></li><li class="course-navbar-item"><a href="https://class.coursera.org/susdev-002/wiki/aboutus" data-if-linkable="modal-lock,gray,lock-icon" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="navclick_About_Us" class="coursera-university-color"><span>About Us </span><span></span></a></li><li class="course-navbar-item"><a href="https://class.coursera.org/susdev-002/wiki/Course_Overview" data-if-linkable="modal-lock,gray,lock-icon" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="navclick_Course_Overview" class="coursera-university-color"><span>Course Overview </span><span></span></a></li><li class="course-navbar-item"><a href="https://class.coursera.org/susdev-002/wiki/syllabus" data-if-linkable="modal-lock,gray,lock-icon" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="navclick_Syllabus" class="coursera-university-color"><span>Syllabus </span><span></span></a></li><li class="course-navbar-item"><h3>Course Materials</h3></li><li class="course-navbar-item active"><a href="https://class.coursera.org/susdev-002/lecture/index" data-if-linkable="modal-lock,gray,lock-icon" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="navclick_Video_Lectures" class="coursera-university-color"><span>Video Lectures </span><span></span><span class="course-navbar-selected-marker">(selected)</span></a></li><li class="course-navbar-item"><a href="https://class.coursera.org/susdev-002/quiz/index" data-if-linkable="modal-lock,gray,lock-icon" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="navclick_Quizzes" class="coursera-university-color"><span>Quizzes </span><span></span></a></li><li class="course-navbar-item"><a href="https://class.coursera.org/susdev-002/forum/index" data-if-linkable="modal-lock,gray,lock-icon" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="navclick_Discussion_Forums" class="coursera-university-color"><span>Discussion Forums </span><span></span></a></li><li class="course-navbar-item"><a href="https://class.coursera.org/susdev-002/wiki/Reading_Materials" data-if-linkable="modal-lock,gray,lock-icon" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="navclick_Reading_Materials" class="coursera-university-color"><span>Reading Materials </span><span></span></a></li><li class="course-navbar-item"><a href="https://class.coursera.org/susdev-002/wiki/Coursebook_Information" data-if-linkable="modal-lock,gray,lock-icon" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="navclick_Coursebook_Information" class="coursera-university-color"><span>Coursebook Information </span><span></span></a></li><li class="course-navbar-item"><a href="https://class.coursera.org/susdev-002/wiki/Links_quizzes" data-if-linkable="modal-lock,gray,lock-icon" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="navclick_Links_from_Quizzes" class="coursera-university-color"><span>Links from Quizzes </span><span></span></a></li><li class="course-navbar-item"><a href="https://class.coursera.org/susdev-002/quiz/index?quiz_type=survey" data-if-linkable="modal-lock,gray,lock-icon" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="navclick_Surveys_" class="coursera-university-color"><span>Surveys  </span><span></span></a></li><li class="course-navbar-item"><a href="https://class.coursera.org/susdev-002/wiki/FAQ" data-if-linkable="modal-lock,gray,lock-icon" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="navclick_FAQ" class="coursera-university-color"><span>FAQ </span><span></span></a></li><li class="course-navbar-item"><h3>Community</h3></li><li class="course-navbar-item"><a href="https://class.coursera.org/susdev-002/wiki/Google_Hangouts" data-if-linkable="modal-lock,gray,lock-icon" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="navclick_Google_Hangouts" class="coursera-university-color"><span>Google Hangouts </span><span></span></a></li><li class="course-navbar-item"><a href="http://www.meetup.com/Coursera/" target="_blank" class="coursera-university-color">Join a Meetup<span class="icon-share"></span><span class="accessible-text-for-reader">opens in new browser tab</span></a></li></ul><ul style="list-style-type:none;margin-left: 10px;"><li><a href="http://help.coursera.org/" target="_blank" title="Open help articles in new window" class="coursera-university-color"><i class="icon-question-sign"></i>Help Articles</a></li></ul><ul style="list-style-type:none;margin-left: 10px;"><li><a href="https://class.coursera.org/susdev-002/forum/list?forum_id=10000&url=https%3A%2F%2Fclass.coursera.org%2Fsusdev-002%2Flecture" class="coursera-university-color"><i class="icon-comments"></i>Course Materials Errors</a></li><li><a href="https://class.coursera.org/susdev-002/forum/list?forum_id=10001&url=https%3A%2F%2Fclass.coursera.org%2Fsusdev-002%2Flecture" class="coursera-university-color"><i class="icon-comments"></i>Technical Issues</a></li></ul></div></div></div></div><div id="course-page-content" role="main"><div id="spark" class="hide" style="display: block;">
+<div class="course-lectures-list">
+  <div data-lecture-coursebase="https://class.coursera.org/susdev-002/"></div>
+  <h2 class="course-page-header">Video Lectures
+    <a class="coursera-reporter-link" title="Click here if you&#39;re experiencing technical problems or found errors in the course materials." target="_blank" href="https://class.coursera.org/susdev-002/help/videos?url=https%3A%2F%2Fclass.coursera.org%2Fsusdev-002%2Flecture">
+     Help
+    </a>
+
+  </h2>
+
+  <a data-coursera-admin-helpwidget-link="" rel="help" href="https://class.coursera.org/mooc/help/lecture/add" title="Creating a lecture"></a>
+  
+  <div><!-- Lecture List Preamble Here --></div>
+
+  
+  
+  <p style="margin-bottom:20px">
+    Having trouble viewing lectures?
+    Try changing players. Your current player format is html5. <a href="https://class.coursera.org/susdev-002/lecture/index?lecture_player=flash">Change to flash</a>.
+  </p><p>
+
+  </p><div class="course-item-list">
+<div class="course-item-list-header expanded"><h3><span class="icon-chevron-down" style="width:18px;display:inline-block;"></span> &nbsp;Week 3: A Short History of Economic Development </h3> <span class="hidden">(expanded, click to collapse)</span></div><ul class="course-item-list-section-list"><li class="unviewed"><a data-lecture-id="27" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="watch-lecture" data-modal-iframe="https://class.coursera.org/susdev-002/lecture/view?lecture_id=27" href="https://class.coursera.org/susdev-002/lecture/27" data-modal=".course-modal-frame" rel="lecture-link" class="lecture-link">
+Lecture 3 - Chapter 1:  Economic development is new (12:03)</a>
+<div class="course-lecture-item-resource">
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=27_en&format=txt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (text)">
+           <i class="icon-align-justify resource"></i>
+           <div class="hidden">Subtitles (text) for Lecture 3 - Chapter 1:  Economic development is new (12:03)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=27_en&format=srt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (srt)">
+           <i class="icon-list resource"></i>
+           <div class="hidden">Subtitles (srt) for Lecture 3 - Chapter 1:  Economic development is new (12:03)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/download.mp4?lecture_id=27" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Video (MP4)" class="hoverZoomLink">
+           <i class="icon-download-alt resource"></i>
+           <div class="hidden">Video (MP4) for Lecture 3 - Chapter 1:  Economic development is new (12:03)</div>
+        </a>
+</div>
+</li><li class="unviewed"><a data-lecture-id="29" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="watch-lecture" data-modal-iframe="https://class.coursera.org/susdev-002/lecture/view?lecture_id=29" href="https://class.coursera.org/susdev-002/lecture/29" data-modal=".course-modal-frame" rel="lecture-link" class="lecture-link">
+Lecture 3 - Chapter 2: The industrial revolution starts in England (12:56)</a>
+<div class="course-lecture-item-resource">
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=29_en&format=txt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (text)">
+           <i class="icon-align-justify resource"></i>
+           <div class="hidden">Subtitles (text) for Lecture 3 - Chapter 2: The industrial revolution starts in England (12:56)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=29_en&format=srt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (srt)">
+           <i class="icon-list resource"></i>
+           <div class="hidden">Subtitles (srt) for Lecture 3 - Chapter 2: The industrial revolution starts in England (12:56)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/download.mp4?lecture_id=29" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Video (MP4)" class="hoverZoomLink">
+           <i class="icon-download-alt resource"></i>
+           <div class="hidden">Video (MP4) for Lecture 3 - Chapter 2: The industrial revolution starts in England (12:56)</div>
+        </a>
+</div>
+</li><li class="unviewed"><a data-lecture-id="31" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="watch-lecture" data-modal-iframe="https://class.coursera.org/susdev-002/lecture/view?lecture_id=31" href="https://class.coursera.org/susdev-002/lecture/31" data-modal=".course-modal-frame" rel="lecture-link" class="lecture-link">
+Lecture 3 - Chapter 3: The great waves of technological change (14:28)</a>
+<div class="course-lecture-item-resource">
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=31_en&format=txt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (text)">
+           <i class="icon-align-justify resource"></i>
+           <div class="hidden">Subtitles (text) for Lecture 3 - Chapter 3: The great waves of technological change (14:28)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=31_en&format=srt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (srt)">
+           <i class="icon-list resource"></i>
+           <div class="hidden">Subtitles (srt) for Lecture 3 - Chapter 3: The great waves of technological change (14:28)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/download.mp4?lecture_id=31" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Video (MP4)" class="hoverZoomLink">
+           <i class="icon-download-alt resource"></i>
+           <div class="hidden">Video (MP4) for Lecture 3 - Chapter 3: The great waves of technological change (14:28)</div>
+        </a>
+</div>
+</li><li class="unviewed"><a data-lecture-id="33" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="watch-lecture" data-modal-iframe="https://class.coursera.org/susdev-002/lecture/view?lecture_id=33" href="https://class.coursera.org/susdev-002/lecture/33" data-modal=".course-modal-frame" rel="lecture-link" class="lecture-link">
+Lecture 3 - Chapter 4: The diffusion of economic growth (16:20)</a>
+<div class="course-lecture-item-resource">
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=33_en&format=txt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (text)">
+           <i class="icon-align-justify resource"></i>
+           <div class="hidden">Subtitles (text) for Lecture 3 - Chapter 4: The diffusion of economic growth (16:20)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=33_en&format=srt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (srt)">
+           <i class="icon-list resource"></i>
+           <div class="hidden">Subtitles (srt) for Lecture 3 - Chapter 4: The diffusion of economic growth (16:20)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/download.mp4?lecture_id=33" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Video (MP4)" class="hoverZoomLink">
+           <i class="icon-download-alt resource"></i>
+           <div class="hidden">Video (MP4) for Lecture 3 - Chapter 4: The diffusion of economic growth (16:20)</div>
+        </a>
+</div>
+</li><li class="unviewed"><a data-lecture-id="35" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="watch-lecture" data-modal-iframe="https://class.coursera.org/susdev-002/lecture/view?lecture_id=35" href="https://class.coursera.org/susdev-002/lecture/35" data-modal=".course-modal-frame" rel="lecture-link" class="lecture-link">
+Lecture 3 - Chapter 5: Economic Development Since World War II (21:59)</a>
+<div class="course-lecture-item-resource">
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=35_en&format=txt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (text)">
+           <i class="icon-align-justify resource"></i>
+           <div class="hidden">Subtitles (text) for Lecture 3 - Chapter 5: Economic Development Since World War II (21:59)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=35_en&format=srt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (srt)">
+           <i class="icon-list resource"></i>
+           <div class="hidden">Subtitles (srt) for Lecture 3 - Chapter 5: Economic Development Since World War II (21:59)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/download.mp4?lecture_id=35" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Video (MP4)" class="hoverZoomLink">
+           <i class="icon-download-alt resource"></i>
+           <div class="hidden">Video (MP4) for Lecture 3 - Chapter 5: Economic Development Since World War II (21:59)</div>
+        </a>
+</div>
+</li></ul><div class="course-item-list-header expanded"><h3><span class="icon-chevron-down" style="width:18px;display:inline-block;"></span> &nbsp;Week 2: Economic development – How we measure it, how it varies around the world </h3> <span class="hidden">(expanded, click to collapse)</span></div><ul class="course-item-list-section-list"><li class="unviewed"><a data-lecture-id="17" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="watch-lecture" data-modal-iframe="https://class.coursera.org/susdev-002/lecture/view?lecture_id=17" href="https://class.coursera.org/susdev-002/lecture/17" data-modal=".course-modal-frame" rel="lecture-link" class="lecture-link">
+Lecture 2 - Chapter 1: Incomes around the World (16:46)</a>
+<div class="course-lecture-item-resource">
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=17_en&format=txt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (text)">
+           <i class="icon-align-justify resource"></i>
+           <div class="hidden">Subtitles (text) for Lecture 2 - Chapter 1: Incomes around the World (16:46)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=17_en&format=srt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (srt)">
+           <i class="icon-list resource"></i>
+           <div class="hidden">Subtitles (srt) for Lecture 2 - Chapter 1: Incomes around the World (16:46)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/download.mp4?lecture_id=17" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Video (MP4)" class="hoverZoomLink">
+           <i class="icon-download-alt resource"></i>
+           <div class="hidden">Video (MP4) for Lecture 2 - Chapter 1: Incomes around the World (16:46)</div>
+        </a>
+</div>
+</li><li class="unviewed"><a data-lecture-id="19" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="watch-lecture" data-modal-iframe="https://class.coursera.org/susdev-002/lecture/view?lecture_id=19" href="https://class.coursera.org/susdev-002/lecture/19" data-modal=".course-modal-frame" rel="lecture-link" class="lecture-link">
+Lecture 2 - Chapter 2: Urban/rural inequality (12:20)</a>
+<div class="course-lecture-item-resource">
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=19_en&format=txt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (text)">
+           <i class="icon-align-justify resource"></i>
+           <div class="hidden">Subtitles (text) for Lecture 2 - Chapter 2: Urban/rural inequality (12:20)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=19_en&format=srt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (srt)">
+           <i class="icon-list resource"></i>
+           <div class="hidden">Subtitles (srt) for Lecture 2 - Chapter 2: Urban/rural inequality (12:20)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/download.mp4?lecture_id=19" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Video (MP4)" class="hoverZoomLink">
+           <i class="icon-download-alt resource"></i>
+           <div class="hidden">Video (MP4) for Lecture 2 - Chapter 2: Urban/rural inequality (12:20)</div>
+        </a>
+</div>
+</li><li class="unviewed"><a data-lecture-id="21" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="watch-lecture" data-modal-iframe="https://class.coursera.org/susdev-002/lecture/view?lecture_id=21" href="https://class.coursera.org/susdev-002/lecture/21" data-modal=".course-modal-frame" rel="lecture-link" class="lecture-link">
+Lecture 2 - Chapter 3: Income inequality within countries (13:42)</a>
+<div class="course-lecture-item-resource">
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=21_en&format=txt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (text)">
+           <i class="icon-align-justify resource"></i>
+           <div class="hidden">Subtitles (text) for Lecture 2 - Chapter 3: Income inequality within countries (13:42)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=21_en&format=srt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (srt)">
+           <i class="icon-list resource"></i>
+           <div class="hidden">Subtitles (srt) for Lecture 2 - Chapter 3: Income inequality within countries (13:42)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/download.mp4?lecture_id=21" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Video (MP4)" class="hoverZoomLink">
+           <i class="icon-download-alt resource"></i>
+           <div class="hidden">Video (MP4) for Lecture 2 - Chapter 3: Income inequality within countries (13:42)</div>
+        </a>
+</div>
+</li><li class="unviewed"><a data-lecture-id="23" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="watch-lecture" data-modal-iframe="https://class.coursera.org/susdev-002/lecture/view?lecture_id=23" href="https://class.coursera.org/susdev-002/lecture/23" data-modal=".course-modal-frame" rel="lecture-link" class="lecture-link">
+Lecture 2 - Chapter 4: Measuring wellbeing (14:58)</a>
+<div class="course-lecture-item-resource">
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=23_en&format=txt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (text)">
+           <i class="icon-align-justify resource"></i>
+           <div class="hidden">Subtitles (text) for Lecture 2 - Chapter 4: Measuring wellbeing (14:58)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=23_en&format=srt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (srt)">
+           <i class="icon-list resource"></i>
+           <div class="hidden">Subtitles (srt) for Lecture 2 - Chapter 4: Measuring wellbeing (14:58)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/download.mp4?lecture_id=23" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Video (MP4)" class="hoverZoomLink">
+           <i class="icon-download-alt resource"></i>
+           <div class="hidden">Video (MP4) for Lecture 2 - Chapter 4: Measuring wellbeing (14:58)</div>
+        </a>
+</div>
+</li><li class="unviewed"><a data-lecture-id="25" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="watch-lecture" data-modal-iframe="https://class.coursera.org/susdev-002/lecture/view?lecture_id=25" href="https://class.coursera.org/susdev-002/lecture/25" data-modal=".course-modal-frame" rel="lecture-link" class="lecture-link">
+Lecture 2 - Chapter 5: Convergence or divergence? (14:53)</a>
+<div class="course-lecture-item-resource">
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=25_en&format=txt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (text)">
+           <i class="icon-align-justify resource"></i>
+           <div class="hidden">Subtitles (text) for Lecture 2 - Chapter 5: Convergence or divergence? (14:53)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=25_en&format=srt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (srt)">
+           <i class="icon-list resource"></i>
+           <div class="hidden">Subtitles (srt) for Lecture 2 - Chapter 5: Convergence or divergence? (14:53)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/download.mp4?lecture_id=25" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Video (MP4)" class="hoverZoomLink">
+           <i class="icon-download-alt resource"></i>
+           <div class="hidden">Video (MP4) for Lecture 2 - Chapter 5: Convergence or divergence? (14:53)</div>
+        </a>
+</div>
+</li></ul><div class="course-item-list-header expanded"><h3><span class="icon-chevron-down" style="width:18px;display:inline-block;"></span> &nbsp;Week 1: What is Sustainable Development?</h3> <span class="hidden">(expanded, click to collapse)</span></div><ul class="course-item-list-section-list"><li class="unviewed"><a data-lecture-id="5" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="watch-lecture" data-modal-iframe="https://class.coursera.org/susdev-002/lecture/view?lecture_id=5" href="https://class.coursera.org/susdev-002/lecture/5" data-modal=".course-modal-frame" rel="lecture-link" class="lecture-link">
+Lecture 1 - Chapter 1: Intro to Sustainable Development (11:11)</a>
+<div class="course-lecture-item-resource">
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=5_en&format=txt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (text)">
+           <i class="icon-align-justify resource"></i>
+           <div class="hidden">Subtitles (text) for Lecture 1 - Chapter 1: Intro to Sustainable Development (11:11)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=5_en&format=srt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (srt)">
+           <i class="icon-list resource"></i>
+           <div class="hidden">Subtitles (srt) for Lecture 1 - Chapter 1: Intro to Sustainable Development (11:11)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/download.mp4?lecture_id=5" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Video (MP4)" class="hoverZoomLink">
+           <i class="icon-download-alt resource"></i>
+           <div class="hidden">Video (MP4) for Lecture 1 - Chapter 1: Intro to Sustainable Development (11:11)</div>
+        </a>
+</div>
+</li><li class="unviewed"><a data-lecture-id="7" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="watch-lecture" data-modal-iframe="https://class.coursera.org/susdev-002/lecture/view?lecture_id=7" href="https://class.coursera.org/susdev-002/lecture/7" data-modal=".course-modal-frame" rel="lecture-link" class="lecture-link">
+Lecture 1 - Chapter 2: Economic Growth and Progess (14:06)</a>
+<div class="course-lecture-item-resource">
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=7_en&format=txt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (text)">
+           <i class="icon-align-justify resource"></i>
+           <div class="hidden">Subtitles (text) for Lecture 1 - Chapter 2: Economic Growth and Progess (14:06)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=7_en&format=srt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (srt)">
+           <i class="icon-list resource"></i>
+           <div class="hidden">Subtitles (srt) for Lecture 1 - Chapter 2: Economic Growth and Progess (14:06)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/download.mp4?lecture_id=7" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Video (MP4)" class="hoverZoomLink">
+           <i class="icon-download-alt resource"></i>
+           <div class="hidden">Video (MP4) for Lecture 1 - Chapter 2: Economic Growth and Progess (14:06)</div>
+        </a>
+</div>
+</li><li class="unviewed"><a data-lecture-id="9" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="watch-lecture" data-modal-iframe="https://class.coursera.org/susdev-002/lecture/view?lecture_id=9" href="https://class.coursera.org/susdev-002/lecture/9" data-modal=".course-modal-frame" rel="lecture-link" class="lecture-link">
+Lecture 1 - Chapter 3: Continuing Poverty (14:09)</a>
+<div class="course-lecture-item-resource">
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=9_en&format=txt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (text)">
+           <i class="icon-align-justify resource"></i>
+           <div class="hidden">Subtitles (text) for Lecture 1 - Chapter 3: Continuing Poverty (14:09)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=9_en&format=srt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (srt)">
+           <i class="icon-list resource"></i>
+           <div class="hidden">Subtitles (srt) for Lecture 1 - Chapter 3: Continuing Poverty (14:09)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/download.mp4?lecture_id=9" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Video (MP4)" class="hoverZoomLink">
+           <i class="icon-download-alt resource"></i>
+           <div class="hidden">Video (MP4) for Lecture 1 - Chapter 3: Continuing Poverty (14:09)</div>
+        </a>
+</div>
+</li><li class="unviewed"><a data-lecture-id="11" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="watch-lecture" data-modal-iframe="https://class.coursera.org/susdev-002/lecture/view?lecture_id=11" href="https://class.coursera.org/susdev-002/lecture/11" data-modal=".course-modal-frame" rel="lecture-link" class="lecture-link">
+Lecture 1 - Chapter 4: Environmental Threats (10:13)</a>
+<div class="course-lecture-item-resource">
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=11_en&format=txt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (text)">
+           <i class="icon-align-justify resource"></i>
+           <div class="hidden">Subtitles (text) for Lecture 1 - Chapter 4: Environmental Threats (10:13)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=11_en&format=srt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (srt)">
+           <i class="icon-list resource"></i>
+           <div class="hidden">Subtitles (srt) for Lecture 1 - Chapter 4: Environmental Threats (10:13)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/download.mp4?lecture_id=11" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Video (MP4)" class="hoverZoomLink">
+           <i class="icon-download-alt resource"></i>
+           <div class="hidden">Video (MP4) for Lecture 1 - Chapter 4: Environmental Threats (10:13)</div>
+        </a>
+</div>
+</li><li class="unviewed"><a data-lecture-id="13" data-ab-user-convert-for="honorcode_to_welcome2" data-ab-user-convert="watch-lecture" data-modal-iframe="https://class.coursera.org/susdev-002/lecture/view?lecture_id=13" href="https://class.coursera.org/susdev-002/lecture/13" data-modal=".course-modal-frame" rel="lecture-link" class="lecture-link">
+Lecture 1 - Chapter 5: BAU vs Sustainable Development Paths (16:47)</a>
+<div class="course-lecture-item-resource">
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=13_en&format=txt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (text)">
+           <i class="icon-align-justify resource"></i>
+           <div class="hidden">Subtitles (text) for Lecture 1 - Chapter 5: BAU vs Sustainable Development Paths (16:47)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/subtitles?q=13_en&format=srt" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Subtitles (srt)">
+           <i class="icon-list resource"></i>
+           <div class="hidden">Subtitles (srt) for Lecture 1 - Chapter 5: BAU vs Sustainable Development Paths (16:47)</div>
+        </a>
+        <a target="_new" href="https://class.coursera.org/susdev-002/lecture/download.mp4?lecture_id=13" data-if-linkable="modal-lock" data-placement="top" rel="tooltip" title="Video (MP4)" class="hoverZoomLink">
+           <i class="icon-download-alt resource"></i>
+           <div class="hidden">Video (MP4) for Lecture 1 - Chapter 5: BAU vs Sustainable Development Paths (16:47)</div>
+        </a>
+</div>
+</li></ul></div>
+</div>
+
+
+
+
+<div class="course-modal-frame " data-modal-overlay-class="course-modal-overlay-dark" data-modal-position="absolute" data-modal-position-top="50px" data-modal-overlay-close="false">
+<div style="position:absolute;top:-50px;height:50px;width:100%;background:#000;font-size:18px;padding-top:20px;padding-bottom:10px;border-bottom:1px solid #999999;">
+    <div style="left:5px;color:white;float:left;padding-left:10px;height:24px;width:700px;overflow:hidden" class="course-modal-frame-title"></div>
+
+    <div style="float:right;">
+      
+      <a class="coursera-reporter-link course-modal-frame-title-reporter-link" title="Click here if you&#39;re experiencing technical problems or found errors in the course materials." style="color:white;float:none; margin-right:10px;" target="_blank" href="https://class.coursera.org/susdev-002/help/videos"> Help
+      </a>
+      <a href="javascript:void(0);" role="button" data-modal-close="" style="color:white;cursor:pointer;padding-right:10px" class="icon-remove" id="course-video-close" tabindex="0"><span class="accessible-text-for-reader">Close Video Dialog Box</span></a>
+    </div>
+    <div style="clear:both"></div>
+</div>
+</div>
+</div></div></div></div></div><div class="coursera-footer"></div></div></div></div><!--[if gte IE 8]><script>document.getElementById("coursera-loading-js").style.display = 'block';</script><![endif]-->
+<!--[if lte IE 7]><script>document.getElementById("coursera-loading-nojs").style.display = 'block';
+window._204 = window._204 || [];
+window._gaq = window._gaq || [];
+
+window._gaq.push(
+    ['_setAccount', 'UA-28377374-1'],
+    ['_setDomainName', window.location.hostname],
+    ['_setAllowLinker', true],
+    ['_trackPageview', window.location.pathname]);
+    
+window._204.push(
+  ['client', 'home'],
+  {key:"pageview", value:window.location.pathname});
+  </script><script src="https://dw0ugk4msqulk.cloudfront.net/ea2c68ee9fe49351092d7df94f90b9339201fa23/js/lib/204.js"></script><script src="https://ssl.google-analytics.com/ga.js"></script><![endif]-->
+<!--[if !IE]> --><script>document.getElementById("coursera-loading-js").style.display = 'block';</script><!-- <![endif]-->
+<script src="./course_files/require.js"></script><script data-baseurl="https://dw0ugk4msqulk.cloudfront.net/ea2c68ee9fe49351092d7df94f90b9339201fa23/" data-version="ea2c68ee9fe49351092d7df94f90b9339201fa23" data-timestamp="1411777270983" data-debug="0" data-locale="en" id="_require">if(document.getElementById("coursera-loading-js").style.display == 'block') {
+  (function(el) {
+     require.config({
+       //enforceDefine: true,
+       waitSeconds: 75,
+       baseUrl: el.getAttribute("data-baseurl"),
+       urlArgs: el.getAttribute("data-debug") == "1" ? "v=" + el.getAttribute("data-timestamp") : "",
+       shim: {
+          'underscore': {
+             exports: '_'
+          },
+          'backbone': {
+             deps: ['underscore', 'jquery'],
+             exports: 'Backbone',
+             init: function(_, $) {
+               Backbone.$ = $;
+               return Backbone;
+             }
+          },
+          'pages/hg/thirdparty/js/backbone.marionette': {
+            deps: ["backbone"]
+          },
+          'pages/hg/thirdparty/js/webshims/polyfiller': {
+            deps: ["jquery"]
+          },
+          'pages/hg/thirdparty/js/webshims/extras/mousepress': {
+            deps: ["jquery", "pages/hg/thirdparty/js/webshims/polyfiller"]
+          },
+          'pages/hg/thirdparty/js/jquery.throttle': {
+            deps: ["jquery"]
+          },
+          'js/lib/jquery.linkify': {
+            deps: ["jquery"]
+          },
+          'pages/hg/thirdparty/js/js/bootstrap/alert': {
+            deps: ["jquery", "pages/hg/thirdparty/js/bootstrap/transition"]
+          },
+          'spark/core/js/jquery_ui': {
+            deps: ["jquery"]
+          },
+          'spark/core/js/jquery.history': {
+            deps: ["jquery"]
+          },
+          'js/lib/bootstrap.tooltip': {
+            deps: ["jquery"]
+          },
+          'pages/hg/thirdparty/js/bootstrap/transition': {
+            deps: ["jquery"]
+          },
+          'pages/hg/thirdparty/js/bootstrap/tab': {
+            deps: ["jquery"]
+          },
+          'bundles/videojs/lib/video.4.3.0': {
+            exports: 'vjs'
+          }
+       },
+       paths: {
+          "jquery":                         "pages/spark/jquery",
+          "underscore":                     "js/core/underscore.1.5.2",
+          "backbone":                       "js/core/backbone.1.1.0",
+          "backbone.relational":            "js/lib/backbone.relational.0.8.6",
+          "i18n":                           "js/core/i18n._t",
+          "css":                            "js/vendor/require.css.v0-1-2",
+          "memoize":                        "js/lib/require.memoize.v0-0-1",
+          "pages/spark/models/user.json":   "empty:",
+          "pages/spark/models/course.json": "empty:",
+          "pages/spark/models/navbar.json": "empty:"
+       },
+       callback: function() {
+                    require(["pages/spark/routes"]);
+                },
+       config: {
+         i18n: {
+           locale: (window.localStorage ? localStorage.getItem('locale') : '') || el.getAttribute('data-locale')
+         }
+       }
+     });
+  })(document.getElementById("_require"));
+}
+</script><script>define("pages/spark/models/user.json", [], function(){
+      return JSON.parse("{\"id\":9583179,\"email_address\":\"vise890+cloujera@gmail.com\",\"full_name\":\"Cloujera \",\"locale\":null,\"timezone\":\"America\\\/Los_Angeles\",\"access_group_id\":\"4\",\"registration_time\":\"1411824470\",\"last_access_time\":\"1411824481\",\"last_access_ip\":\"212.91.94.194\",\"signature_track_register_time\":\"0\",\"email_announcement\":\"1\",\"email_forum\":\"1\",\"in_signature_track\":\"0\",\"wishes_proctored_exam\":\"0\",\"first_name\":\"Cloujera\",\"permissions\":[\"default\",\"allow_site_access\"],\"group\":\"Student\",\"anonymous\":false,\"forum_title\":\"Student\",\"signature_track_state\":1,\"verified_quizzes\":[],\"submitted_quizzes\":[],\"scheduled_proctored_exam\":null,\"last_chance_modal\":null,\"flexjoin_last_chance_modal\":null}");
+  });
+define("pages/spark/models/course.json", [], function(){
+      return JSON.parse("{\"id\":973198,\"isPrivate\":false,\"type\":\"public\",\"name\":\"The Age of Sustainable Development\",\"instructor\":\"Jeffrey Sachs\",\"sessionName\":\"susdev-002\",\"externalBaseURL\":\"https:\\\/\\\/www.coursera.org\\\/\",\"shortname\":\"susdev\",\"host\":\"https:\\\/\\\/www.coursera.org\\\/\",\"assetUnversionedLink\":\"https:\\\/\\\/dw0ugk4msqulk.cloudfront.net\\\/\",\"cheggID\":\"\",\"hasLTI\":true,\"badgevilleDomain\":\"\",\"linkable\":false,\"universityShortname\":\"columbia\",\"signatureTrackStatus\":{\"signature_track_enabled\":0},\"courseURLs\":{\"log_in_link\":\"https:\\\/\\\/accounts.coursera.org\\\/signin?post_redirect=https%3A%2F%2Faccounts.coursera.org%2Fsignin%3Fuser_action%3Dclass%26course_id%3D973198%26post_redirect%3Dhttps%253A%252F%252Fclass.coursera.org%252Fsusdev-002%252Fauth%252Fauth_redirector%253Ftype%253Dlogin%2526subtype%253Dnormal%2526visiting%253D\",\"sign_up_link\":\"https:\\\/\\\/accounts.coursera.org\\\/signup?enroll_cid=973198&enroll_sn=susdev&enroll_n=The Age of Sustainable Development\",\"view_course_info_link\":\"https:\\\/\\\/www.coursera.org\\\/course\\\/susdev\",\"sign_up_link_cant_enroll\":\"https:\\\/\\\/accounts.coursera.org\\\/signup?post_redirect=https%3A%2F%2Fwww.coursera.org%2Fcourse%2Fsusdev\"},\"courseBase\":\"https:\\\/\\\/class.coursera.org\\\/susdev-002\\\/\",\"search\":true,\"hideWiki\":true,\"hideMeetup\":false,\"aceStartRegistrationDate\":\"Wed 31 Dec 1969  4:00 PM PST\",\"aceEndRegistrationDate\":\"Wed 31 Dec 1969  4:00 PM PST\",\"aceExamStartDate\":\"Wed 31 Dec 1969  4:00 PM PST\",\"aceExamEndDate\":\"Wed 31 Dec 1969  4:00 PM PST\",\"aceExamRules\":\"\",\"aceExamDuration\":\"\",\"aceBeforeExam\":false,\"aceAfterExam\":true,\"aceHours\":null,\"aceCreditType\":\"\",\"acePrice\":null,\"aceExamID\":null,\"aceEligible\":false,\"canRegisterForACE\":false,\"specialization\":null,\"supportForums\":true,\"textbooks\":\"\",\"inVideoQuizV2\":false,\"in_flexjoin\":0,\"honorCodeExtraText\":\"\",\"honorCodeCustomTitle\":\"\",\"honorCodeCustomButton\":\"\",\"studentAccessDisabled\":0}");
+  });
+  define("pages/spark/models/navbar.json", [], function(){
+      return JSON.parse("{\"items\":[{\"name\":\"Course Information\",\"icon\":\"\",\"link_type\":\"heading\",\"link_data\":\"\"},{\"name\":\"About Us\",\"icon\":\"\",\"link_type\":\"wiki\",\"link_data\":\"aboutus\"},{\"name\":\"Course Overview\",\"icon\":\"\",\"link_type\":\"wiki\",\"link_data\":\"Course_Overview\"},{\"name\":\"Syllabus\",\"icon\":\"wiki\",\"link_type\":\"wiki\",\"link_data\":\"syllabus\"},{\"name\":\"Course Materials\",\"icon\":\"\",\"link_type\":\"heading\",\"link_data\":\"\"},{\"name\":\"Video Lectures\",\"icon\":\"lecture\",\"link_type\":\"circuit\",\"link_data\":\"lecture:index\"},{\"name\":\"Quizzes\",\"icon\":\"quiz\",\"link_type\":\"circuit\",\"link_data\":\"quiz:index\"},{\"name\":\"Discussion Forums\",\"icon\":\"forum\",\"link_type\":\"circuit\",\"link_data\":\"forum:index\"},{\"name\":\"Reading Materials\",\"icon\":\"\",\"link_type\":\"wiki\",\"link_data\":\"Reading_Materials\"},{\"name\":\"Coursebook Information\",\"icon\":\"\",\"link_type\":\"wiki\",\"link_data\":\"Coursebook_Information\"},{\"name\":\"Links from Quizzes\",\"icon\":\"\",\"link_type\":\"wiki\",\"link_data\":\"Links_quizzes\"},{\"name\":\"Surveys \",\"icon\":\"quiz\",\"link_type\":\"circuit\",\"link_data\":\"quiz:index?quiz_type=survey\"},{\"name\":\"FAQ\",\"icon\":\"\",\"link_type\":\"wiki\",\"link_data\":\"FAQ\"},{\"name\":\"Community\",\"icon\":\"\",\"link_type\":\"heading\",\"link_data\":\"\"},{\"name\":\"Google Hangouts\",\"icon\":\"\",\"link_type\":\"wiki\",\"link_data\":\"Google_Hangouts\"}]}");
+  });
+</script><script>var coursera_enable_new_help_center = false;
+</script><div class="hide confirm-navigation modal"><div class="modal-header"><h3>Confirm Navigation</h3></div><div class="modal-body"><div class="confirm-navigation-message"></div><div>Are you sure you want to leave this page?</div></div><div class="modal-footer"><button data-modal-close="data-modal-close" class="btn confirm-navigation-stay">Stay on this Page</button><button data-modal-close="data-modal-close" class="btn btn-danger confirm-navigation-leave">Leave this Page</button></div></div><div class="coursera-async-message" style="display: none;"></div></body></html>

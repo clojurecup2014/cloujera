@@ -29,7 +29,7 @@
       cs)))
 
 ;; Username -> Password -> (ProtectedUrl -> Page)
-(defn authenticated-get [username password]
-  (let [authenticated-cs (authenticated-cookie-store username password)]
+(defn get-protected-page [username password]
+  (let [authenticated-cs ((memoize authenticated-cookie-store) username password)]
     (fn [protected-url]
-      (http/get protected-url {:cookie-store authenticated-cs}))))
+      (:body (http/get protected-url {:cookie-store authenticated-cs})))))
