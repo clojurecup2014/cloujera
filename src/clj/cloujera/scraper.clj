@@ -1,5 +1,6 @@
 (ns cloujera.scraper
-  (:require [cloujera.burglar.core :as burglar]))
+  (:require [cloujera.burglar.core :as burglar]
+            [cloujera.cache.core :as cache]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (def username "vise890+cloujera@gmail.com")
@@ -13,10 +14,9 @@
    "https://class.coursera.org/calcsing-006/lecture"
    "https://class.coursera.org/automata-003/lecture"
    "https://class.coursera.org/crypto-012/lecture"
-   "https://class.coursera.org/ml-007/lecture"
-   ])
+   "https://class.coursera.org/ml-007/lecture"])
 
-(def get-lectures-page (burglar/authenticated-get username password))
+(def get-lectures-page (cache/red-cache (burglar/authenticated-get username password)))
 
 (->> (coursera-urls)
      (map get-lectures-page)
