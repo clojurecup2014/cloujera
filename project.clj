@@ -19,13 +19,13 @@
 
   :plugins [[lein-cljsbuild "1.0.4-SNAPSHOT"]]
 
-  :source-paths ["src"]
+  :source-paths ["src/clj"]
 
   :cljsbuild {
     :builds [{:id "cloujera"
-              :source-paths ["src"]
+              :source-paths ["src/cljs"]
               :compiler {
-                :output-to "cloujera.js"
-                :output-dir "out"
+                :output-to "resources/public/js/cloujera.js"
+                :output-dir "resources/public/js/out"
                 :optimizations :none
                 :source-map true}}]})
