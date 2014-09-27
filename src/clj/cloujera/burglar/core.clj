@@ -26,9 +26,6 @@
         url (parser/extract-video-url embedded-video-page)]
     (assoc video :url url)))
 
-;; Video -> Video
-;(def add-course [video])
-
 ;; THE BEAST
 (->> (coursera-urls)
      (map get-coursera-page)

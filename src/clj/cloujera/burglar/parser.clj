@@ -4,8 +4,11 @@
             [clojure.string :as string]
             [schema.core :as schema]
             [clj-http.client :as http]
-            [net.cgrand.enlive-html :as html]))
+            [net.cgrand.enlive-html :as html]
+            [cheshire.core :as json]))
 
+
+(def course-api-endpoint "https://api.coursera.org/api/catalog.v1/courses")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defn get-body [url]
   (:body (http/get url)))
@@ -23,32 +26,33 @@
 (defn video-_link->embedded-video-url [video-_link]
   (let [video-id (video-_link->id video-_link)
         lecture-url (video-_link->lecture-url video-_link)]
-    (str  lecture-url "/view?lecture_id=" video-id)))
+    (str lecture-url "/view?lecture_id=" video-id)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; COURSE
 (defn- get-course-_link [h]
   (let [attr :data-lecture-coursebase
-        tag (html/select h [:div (html/attr-has attr)])
-        _link (-> tag
-                  first
-                  :attrs
-                  attr)]
-    _link))
+        tag (html/select h [:div (html/attr-has attr)])]
+        (-> tag first :attrs attr)))
 
-;; TODO: implement
-(defn- course-_link->id [_link] "susdev-002")
+(defn- course-_link->id [_link]
+  (let [url-tokens (string/split _link #"/")
+        session-token (last url-tokens)]
+    (first (string/split session-token #"-"))))
 
-;; TODO: implement
-(defn- course-_link->title [_link] "The Age of Sustainable Development")
+(defn- course-id->title [id]
+  (let [courses (:elements (json/parse-string (cached-http-get course-api-endpoint) true))
+        course (first (filter #(= (:shortName %) id) courses))]
+    (:name course)))
 
 (defn extract-course [h]
   (let [_link (get-course-_link h)
-        c {:id (course-_link->id _link)
-           :title (course-_link->title _link)
+        id (course-_link->id _link)
+        c {:id id
+           :title (course-id->title id)
            :_link (get-course-_link h)}]
-  (schema/validate video/Course c)))
+   (schema/validate video/Course c)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -84,7 +88,7 @@
   (let [_link (video-list-item->_link video-list-item)]
      {:id (video-_link->id _link)
       :title (video-list-item->title video-list-item)
-      ;:transcript (cached-http-get (video-_link->transcript-url _link))
+      :transcript (cached-http-get (video-_link->transcript-url _link))
       :_link _link}))
 
 
@@ -111,8 +115,10 @@
 ;; HTML -> [Videos]
 (defn extract-videos [html]
   (let [html-soup (html/html-snippet html)
-        video-list (extract-video-list html-soup)]
+        video-list (extract-video-list html-soup)
+        course (extract-course html-soup)]
     (->> video-list
          (filter needed?)
-         (map video-list-item->video))))
+         (map video-list-item->video)
+         (map #(assoc % :course course)))))
 

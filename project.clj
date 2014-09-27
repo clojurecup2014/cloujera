@@ -15,6 +15,8 @@
 
                  [enlive "1.1.5"] ;; for scraping
 
+                 [cheshire "5.3.1"] ;; JSON deserializing
+
                  [clojurewerkz/elastisch "2.1.0-beta7"] ;; for persitance
                  [com.taoensso/carmine "2.7.0" :exclusions [org.clojure/clojure]]] ;; for caching
 
