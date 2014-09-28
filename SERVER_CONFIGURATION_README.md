@@ -1,4 +1,4 @@
-# Server configuration
+### Server Configuration
 
 #### The JAR
 
