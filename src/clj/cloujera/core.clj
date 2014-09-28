@@ -7,7 +7,8 @@
 
 (def app
   (-> (handler/site routes/app-routes)
-      (middleware/wrap-json-response)))
+      (middleware/wrap-json-response)
+      (middleware/wrap-json-body {:keywords? true :bigdecimals? true})))
 
 (defn -main []
   (server/run-server app {:port 8080}))

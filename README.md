@@ -10,9 +10,9 @@ Then build the uberjar
 
 Then try it out locally
 
-`java -jar target/cloujera-0.1.0-SNAPSHOT-standalone.jar`
+`java -jar target/uberjar/cloujera-0.1.0-SNAPSHOT-standalone.jar`
 
-Hit localhost:5000 in your browser.
+Hit localhost:8080 in your browser.
 
 
 ### Server Configuration

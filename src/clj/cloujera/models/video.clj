@@ -18,6 +18,9 @@
    :title s/Str
    :_link s/Str})
 
+(defn valid-course? [c]
+  (s/validate Course c))
+
 (def Video
   "The schema vor a Coursera Video"
   {:id s/Str
@@ -27,4 +30,5 @@
    :_link s/Str
    :course Course})
 
-(s/validate Video fake-video)
+(defn valid-video? [v]
+  (s/validate Video v))

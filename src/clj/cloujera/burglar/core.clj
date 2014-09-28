@@ -14,31 +14,19 @@
 (def password "letswinthisthing")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defn- coursera-urls []
-  ["https://class.coursera.org/modernpoetry-003/lecture"
-   "https://class.coursera.org/comparch-003/lecture"
-   "https://class.coursera.org/algs4partI-006/lecture"
-   "https://class.coursera.org/calcsing-006/lecture"
-   "https://class.coursera.org/automata-003/lecture"
-   "https://class.coursera.org/crypto-012/lecture"
-   "https://class.coursera.org/ml-007/lecture"])
-
 (def get-coursera-page (cache/persist (scraper/get-protected-page username password)))
 
 ;; Video -> Video
-(defn- add-video-url [video]
+(defn- get-and-add-video-url [video]
   (let [embedded-video-url (video-parser/_link->embedded-video-url (:_link video))
         embedded-video-page (get-coursera-page embedded-video-url)
         url (video-parser/extract-video-url embedded-video-page)]
     (assoc video :video-url url)))
 
-(defn no-embeddable-video? [video] (nil? (:video-url video)))
-
 ;; THE BEAST
-(->> (coursera-urls)
-     (map get-coursera-page)
-     (map parser/extract-videos)
-     (flatten)
-     (map add-video-url)
-     (remove no-embeddable-video?)
-     (map #(schema/validate video/Video %)))
+(defn raid [lecture-url]
+  (let [lecture-page-html (get-coursera-page lecture-url)
+        videos-without-urls (parser/extract-videos lecture-page-html)
+        all-videos (pmap get-and-add-video-url videos-without-urls)
+        useable-videos (remove video-parser/no-embeddable-video? all-videos)]
+    (pmap video/valid-video? useable-videos)))

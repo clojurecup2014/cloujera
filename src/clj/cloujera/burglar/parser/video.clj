@@ -36,6 +36,8 @@
 (defn can-index? [soup]
     (transcript-exists? soup))
 
+(defn no-embeddable-video? [video] (nil? (:video-url video)))
+
 (defn- soup->_link
   "extracts the video._link from an the html soup"
   [soup]
