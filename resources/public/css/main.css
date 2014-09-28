@@ -50,7 +50,7 @@ hr {
 }
 
 #main-message {
-  width: 650px;
+  max-width: 650px;
   margin: 250px auto;
   text-align: center;
 }
