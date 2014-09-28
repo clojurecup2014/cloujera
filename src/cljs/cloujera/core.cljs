@@ -33,11 +33,15 @@
     om/IRenderState
     (render-state [this state]
       (dom/input #js {:type "text"
+                      :className "form-control"
                       :ref "search-query"
                       :value (:text state)
                       :onChange #(handle-input % owner state)}
-      (dom/button #js {:onClick #(handle-search app owner)}
-                      "Search")))))
+      (dom/span #js {:className "input-group-btn"}
+           (dom/button #js {:className "btn btn-default"
+                            :type "button"
+                            :onClick #(handle-search app owner)}
+                            "Search"))))))
 
 (om/root
   search-bar-view
