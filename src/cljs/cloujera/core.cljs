@@ -54,6 +54,7 @@
     (render-state [this state]
       (dom/input #js {:type "text"
                       :className "form-control"
+                      :placeholder "what do you want to learn about today?"
                       :ref "search-query"
                       :value (:text state)
                       :onKeyPress #(when (== (.-keyCode %) 13)
