@@ -11,9 +11,9 @@
 
 (def conn (esr/connect "http://127.0.0.1:9200"))
 
-(defn save-video [video]
+(defn save [video] (do
   (video/valid-video? video)
-  (esd/create conn "videos" "video" video))
+  (esd/create conn "videos" "video" video)))
 
 (defn fuzzy [term]
   (esd/search conn "videos" "video" :query (q/fuzzy :transcript {:value term :min_similarity 3})))
@@ -27,5 +27,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;(save-video video/fake-video)
-(fuzzy "The world")
-(all)
+;;(fuzzy "The world")
+;;(all)

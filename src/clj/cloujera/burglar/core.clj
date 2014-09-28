@@ -30,4 +30,4 @@
         videos-without-urls (parser/extract-videos lecture-page-html)
         all-videos (pmap get-and-add-video-url videos-without-urls)
         useable-videos (remove video-parser/no-embeddable-video? all-videos)]
-    (->> useable-videos (map video/valid-video?) (map search/save-video))))
+    (->> useable-videos (map video/valid-video?) (map search/save))))
