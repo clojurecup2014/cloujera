@@ -1,6 +1,6 @@
 (ns cloujera.controllers.burglar
   (:require [cloujera.burglar.core :as burglar]
-            [taoensso.timbre :as timbre]))\
+            [taoensso.timbre :as timbre]))
 (timbre/refer-timbre) ;; logging aliases
 
 (def lecture-urls
