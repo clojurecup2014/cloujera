@@ -49,6 +49,22 @@ Then create `/etc/init/redis-server.conf` with the following script:
 ```
 description "redis server"
 
+start on runlevel [23]
+stop on shutdown
+
+exec sudo -u redis /usr/bin/redis-server /etc/redis/redis.conf
+
+respawn
+```
+
+Commands are:
+
+```
+sudo start redis-server
+sudo restart redis-server
+sudo stop redis-server
+```
+
 #### Elastic Search
 
 Download and install the Public Signing Key
@@ -76,7 +92,6 @@ sudo update-rc.d -f elasticsearch remove
 ```
 
 Then create `/etc/init/elasticsearch.conf` with the following script:
-
 
 ```
 # ElasticSearch upstart script
@@ -110,4 +125,3 @@ sudo start elasticsearch
 sudo restart elasticsearch
 sudo stop elasticsearch
 ```
-
