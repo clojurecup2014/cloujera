@@ -6,7 +6,7 @@
             [cloujera.search.core :as search]
             [schema.core :as s]))
 
-(defn search [query]
+#_(defn search [query]
   (let [videos (search/term-matching query)]
     (take 10(map video/valid-video? videos
          ))))
@@ -14,6 +14,6 @@
 
 
 ;; stub for API endpoint
-#_(defn search [query]
+(defn search [query]
 (let [video (video/valid-video? video/fake-video)]
     [video video video]))
