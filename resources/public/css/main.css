@@ -34,6 +34,10 @@ hr {
   padding: 0px;
 }
 
+#search-bar input.form-control {
+    width: 174px;
+}
+
 .video-item {
   margin-top: 30px;
   padding-bottom: 25px;
