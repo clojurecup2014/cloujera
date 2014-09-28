@@ -52,6 +52,10 @@ hr {
    padding-top: 10px;
 }
 
+.navbar-form {
+    background-color: #3a3f41;
+}
+
 .main-message {
   max-width: 820px;
   margin: 150px auto;
