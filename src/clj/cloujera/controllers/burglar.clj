@@ -16,11 +16,9 @@
 (defn go []
   (do
     (info "START: raid (scraping) on all hardcoded urls")
-    (pmap burglar/raid lecture-urls)
-    (info "FINISHED: raid (scraping) on all hardcoded urls")))
+    (-> (pmap burglar/raid lecture-urls) (flatten))))
 
 (defn raid-url [lecture-url]
   (do
     (info (str "START: raid (scraping) on " lecture-url))
-    (burglar/raid lecture-url)
-    (info (str "FINISHED: raid (scraping) on " lecture-url))))
+    (burglar/raid lecture-url)))

@@ -18,25 +18,19 @@
 (defn- generate-id [video]
   (str (get-in video [:course :id]) "-" (:id video)))
 
+(defn- extract-results [videos]
+  (map :_source (get-in videos [:hits :hits])))
+
 ;;;;;;;;;;;;;;;;;;;;
 ;; PUBLIC INTERFACE
 ;;;;;;;;;;;;;;;;;;;;
 
 (defn save [video] (do
   (video/valid-video? video)
-  (esd/put conn "videos" "video" (generate-id video) video)))
+  (esd/put conn "videos" "video" (generate-id video) video) video))
 
 (defn fuzzy [term]
-  (esd/search conn "videos" "video" :query (q/fuzzy :transcript {:value term :min_similarity 3})))
+  (extract-results (esd/search conn "videos" "video" :query (q/fuzzy :transcript {:value term :min_similarity 3}))))
 
 (defn all []
-  (esd/search conn "videos" "video" :query (q/match-all {})))
-
-;;;;;;;;;;;;;;;;;;;;
-;; TEST
-;;;;;;;;;;;;;;;;;;;;
-
-;;(generate-id video/fake-video)
-;;(save-video video/fake-video)
-;;(fuzzy "The world")
-;;(all)
+  (extract-results (esd/search conn "videos" "video" :query (q/match-all {}))))

@@ -6,6 +6,37 @@
 2. Start the app
 `lein run`
 
+
+### Setup Elastic Search Locally
+
+Install elastic search:
+
+```
+brew install elasticsearch
+```
+
+Install sense which is the Graphical UI to elastic search.
+Navigate to install folder likely to be`/usr/local/Cellar/elasticsearch/1.3.2`
+This will be avilable from `http://localhost:9200/_plugin/marvel/sense/index.html`
+
+```
+./bin/plugin -i elasticsearch/marvel/latest
+
+```
+
+Stop marvel becoming an agent by the following Commands
+
+```
+echo 'marvel.agent.enabled: false' >> ./config/elasticsearch.yml
+
+```
+Run using
+```
+elasticsearch
+
+```
+
+
 ### Deploying to production
 
 *important* our local code references our API at 127.0.0.1:8080 but for production we want that reference to be cloujera.clojurecup.com:80 so go to `rest-client.cljs` and uncomment the appropriate line like so:
@@ -62,19 +93,19 @@ check cloujera.clojurecup.com
 Create `/etc/init/cloujera.conf` with the following script:
 
 ```
-description "Cloujera Service"  
-author "ThoughtWorkers"  
-  
-start on runlevel [3]  
-stop on shutdown  
-  
-expect fork  
-  
-script  
-    cd /home/cloujera/  
-    java -jar /home/cloujera/cloujera-0.1.0-SNAPSHOT-standalone.jar > /var/log/cloujera.log 2>&1  
-    emit cloujera_running  
-end script  
+description "Cloujera Service"
+author "ThoughtWorkers"
+
+start on runlevel [3]
+stop on shutdown
+
+expect fork
+
+script
+    cd /home/cloujera/
+    java -jar /home/cloujera/cloujera-0.1.0-SNAPSHOT-standalone.jar > /var/log/cloujera.log 2>&1
+    emit cloujera_running
+end script
 ```
 
 Commands are:
