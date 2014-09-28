@@ -7,7 +7,13 @@
             [schema.core :as s]))
 
 (defn search [query]
-  (let [video (s/validate video/Video video/fake-video)]
-    (map video/valid-video?
-         (search/term-matching query))))
+  (let [videos (search/term-matching query)]
+    (take 10(map video/valid-video? videos
+         ))))
 
+
+
+;; stub for API endpoint
+#_(defn search [query]
+(let [video (video/valid-video? video/fake-video)]
+    [video video video]))

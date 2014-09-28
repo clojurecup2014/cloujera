@@ -9,6 +9,10 @@
   (atom
     {:videos []}))
 
+(defn hide-main-msg []
+  (let [main-msg (.getElementById js/document (name "main-message"))]
+      (println (.getElementById js/document (name "main-message")))
+      (set! (-> main-msg .-style .-display ) "none")))
 
 ;; handlers
 (defn handle-input [e owner {:keys [text]}]
@@ -17,6 +21,7 @@
 (defn handle-search [app owner]
   (let [search-query (.-value (om/get-node owner "search-query"))]
     (println (str "Search query is: " search-query))
+    (hide-main-msg)
     (rest-client/search search-query
                         (fn [response]
                            (swap! app-state assoc :videos (get response "results"))))))
