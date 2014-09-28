@@ -33,6 +33,7 @@
 (defn handle-search [app owner]
   (let [search-query (.-value (om/get-node owner "search-query"))]
     (println (str "Search query is: " search-query))
+    (swap! app-state assoc :videos [])
     (hide-main-msg)
     (hide-not-found-msg) ;; this is terrible, sorry
     (rest-client/search search-query
