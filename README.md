@@ -1,6 +1,7 @@
-Cloujera is a fine-grained, spoken word search over Coursera's videos
+Cloujera
+==============
 
-Cloujera does this by performing full text searches on the transcripts of videos on [coursera](http://coursera.org).
+Cloujera lets you do a fine-grained search for spoken words in Coursera's videos. It does this by performing full text searches on the transcripts of videos on [coursera](http://coursera.org).
 
 ### Build and test Locally
 
