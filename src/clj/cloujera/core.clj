@@ -1,9 +1,9 @@
 (ns cloujera.core
-  (:gen-class)
-  (:require [org.httpkit.server :as server]
+  (:require [cloujera.routes :as routes]
             [compojure.handler :as handler]
-            [ring.middleware.json :as middleware]
-            [cloujera.routes :as routes]))
+            [org.httpkit.server :as server]
+            [ring.middleware.json :as middleware])
+  (:gen-class))
 
 (def app
   (-> (handler/site routes/app-routes)

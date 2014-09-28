@@ -1,6 +1,6 @@
 (ns cloujera.burglar.parser.video
-  (:require [cloujera.burglar.parser.utils :as utils]
-            [clojure.string :as string]
+  (:require [clojure.string :as string]
+            [cloujera.burglar.parser.utils :as utils]
             [net.cgrand.enlive-html :as html]))
 
 (defn- _link->base-url [_link]

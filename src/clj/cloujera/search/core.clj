@@ -1,13 +1,9 @@
 (ns cloujera.search.core
-  (:require [clojurewerkz.elastisch.rest          :as esr]
+  (:require [clojure.string :as string]
+            [clojurewerkz.elastisch.query :as q]
+            [clojurewerkz.elastisch.rest :as esr]
             [clojurewerkz.elastisch.rest.document :as esd]
-            [clojurewerkz.elastisch.query         :as q]
-            [clojurewerkz.elastisch.rest.response :as esrsp]
-            [clojurewerkz.elastisch.rest.index    :as esi]
-
-            [clojure.string :as string]
-
-            [cloujera.models.video                :as video]))
+            [cloujera.models.video :as video]))
 
 (def conn (esr/connect "http://127.0.0.1:9200"))
 

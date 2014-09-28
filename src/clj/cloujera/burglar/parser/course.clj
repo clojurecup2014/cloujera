@@ -1,10 +1,10 @@
 (ns cloujera.burglar.parser.course
-  (:require [net.cgrand.enlive-html :as html]
-            [cloujera.burglar.parser.utils :as utils]
+  (:require [cheshire.core :as json]
             [clojure.string :as string]
-            [cheshire.core :as json]
-            [schema.core :as schema]
-            [cloujera.models.video :as video-model]))
+            [cloujera.burglar.parser.utils :as utils]
+            [cloujera.models.video :as video-model]
+            [net.cgrand.enlive-html :as html]
+            [schema.core :as schema]))
 
 (defn- soup->_link
   "gets the course._link from an HTML soup of the lecture page"

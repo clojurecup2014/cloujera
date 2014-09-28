@@ -1,9 +1,9 @@
 (ns cloujera.routes
-  (:require [compojure.route :as route]
-            [compojure.core :refer (GET POST defroutes)]
-            [ring.util.response :as ring]
+  (:require [cloujera.controllers.burglar :as burglar]
             [cloujera.controllers.scrounger :as scrounger]
-            [cloujera.controllers.burglar :as burglar]))
+            [compojure.core :refer [GET POST defroutes]]
+            [compojure.route :as route]
+            [ring.util.response :as ring]))
 
 (def ^:private empty-search-error
   {:status 400 :body {:code 400 :message "You gave me an empty search query!"}})
