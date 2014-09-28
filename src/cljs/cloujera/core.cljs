@@ -49,24 +49,40 @@
   {:target (. js/document (getElementById "search-bar"))})
 
 
+(defn display-info-pane [video]
+  (dom/div #js {:className "col-md-4 info-pane"}
+      (dom/h3 nil
+         (dom/a #js {:href (get-in video ["course" "_link"])
+                     :target "_blank"}
+                   (get-in video ["course" "title"])))
+      (dom/hr nil)
+      (dom/p nil
+          (dom/a #js {:href (get video "_link")
+                      :target "_blank"}
+                   (get video "title")))))
+
 ;; result pane component
 (defn display-video [video]
-  (str "title: " (get video "title") ", id: " (get video "id")))
+  (println(str "title: " (get video "title") ", id: " (get video "id")))
+  (dom/div #js {:className "row video-item"}
+      (dom/div #js {:className "col-md-8"}
+         (dom/video #js {:src "http://d396qusza40orc.cloudfront.net/susdev/recoded_videos%2Fsusdev_3_01.da6ff370809111e3af279b48f4519db4.webm"
+                         :controls true}))
+      (display-info-pane video)))
 
 (defn video-view [video owner]
   (reify
     om/IRender
     (render [this]
             (dom/li nil
-              (dom/span nil (if-not (nil? video)
-                              (display-video video)))))))
+              (display-video video))
+            )))
 
 (defn result-pane-view [app owner]
   (reify
 
     om/IRender
     (render [this]
-      (dom/h2 nil "Results")
       (apply dom/ul nil
          (om/build-all video-view (:videos app))))))
 
