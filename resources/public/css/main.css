@@ -53,19 +53,19 @@ hr {
    padding-top: 10px;
 }
 
-#main-message {
+.main-message {
   max-width: 650px;
   margin: 150px auto;
   text-align: center;
 }
 
-#main-message h1 {
+.main-message h1 {
   letter-spacing: 3px;
   line-height: 57px;
   margin-bottom: 30px;
 }
 
-#main-message hr {
+.main-message hr {
   width: 520px;
   margin: auto;
 }
