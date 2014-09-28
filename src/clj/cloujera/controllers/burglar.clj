@@ -15,5 +15,4 @@
 
 (defn raid-url [lecture-url] (burglar/raid lecture-url))
 
-
 (go)
