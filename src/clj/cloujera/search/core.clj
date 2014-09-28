@@ -5,9 +5,11 @@
             [clojurewerkz.elastisch.rest.response :as esrsp]
             [clojurewerkz.elastisch.rest.index    :as esi]
 
-            [clojure.pprint                       :as pp]
+            [taoensso.timbre :as timbre]
 
             [cloujera.models.video                :as video]))
+
+(timbre/refer-timbre) ;; logging aliases
 
 (def conn (esr/connect "http://127.0.0.1:9200"))
 
@@ -25,9 +27,11 @@
 ;; PUBLIC INTERFACE
 ;;;;;;;;;;;;;;;;;;;;
 
-(defn save [video] (do
-  (video/valid-video? video)
-  (esd/put conn "videos" "video" (generate-id video) video) video))
+(defn save [video]
+  (let [identifier (generate-id video)]
+    (info (str "START: saving" identifier))
+    (video/valid-video? video)
+    (esd/put conn "videos" "video" identifier video) video))
 
 (defn term-matching [term]
   (extract-results (esd/search conn "videos" "video" :query (q/match :transcript term))))

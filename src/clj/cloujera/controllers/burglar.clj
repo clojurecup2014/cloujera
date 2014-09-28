@@ -22,3 +22,5 @@
   (do
     (info (str "START: raid (scraping) on " lecture-url))
     (burglar/raid lecture-url)))
+
+(go)
