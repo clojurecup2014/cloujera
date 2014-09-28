@@ -29,3 +29,5 @@
         all-videos (pmap get-and-add-video-url videos-without-urls)
         useable-videos (remove video-parser/no-embeddable-video? all-videos)]
     (pmap video/valid-video? useable-videos)))
+
+(take 10 (raid "https://class.coursera.org/modernpoetry-003/lecture"))
