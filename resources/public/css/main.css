@@ -24,7 +24,6 @@ hr {
   -moz-border-top-colors: none;
   border-color: #EEEEEE -moz-use-text-color #FFFFFF;
   border-style: solid none;
-  border-width: 1px 0;
   margin: 18px 0;
   padding-top: 25px;
 }
@@ -54,7 +53,7 @@ hr {
 }
 
 .main-message {
-  max-width: 650px;
+  max-width: 820px;
   margin: 150px auto;
   text-align: center;
 }
@@ -68,4 +67,28 @@ hr {
 .main-message hr {
   width: 520px;
   margin: auto;
+}
+
+.input-group {
+  width: 400px;
+}
+
+#search-bar input.form-control {
+  width: 299px;
+  border-radius: 0px;
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+
+#search-bar .search-button {
+  background-color: #3a3f41;
+  color: white;
+  border-radius: 0px;
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.logo {
+  color: white;
+  font-size: x-large;
 }

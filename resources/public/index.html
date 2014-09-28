@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cloujera - Fine, grained search</title>
 
-    <link href="css/main.css" rel="stylesheet">
     <!-- Bootstrap -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="css/main.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
   </head>
   <body>
 
-     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
+     <div class="navbar navbar-inverse navbar-fixed-top" style="padding-top: 11px; background-color: #3a3f41" role="navigation">
+      <div class="container" style="height: 60px" >
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -28,13 +28,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="">Cloujera.</a>
+            <a class="navbar-brand" href=""><span class="logo"><i class="fa fa-ils"></i> Cloujera.</span></a>
         </div>
 
         <div class="navbar-collapse collapse">
           <div class="navbar-form navbar-right" role="form">
-            <div class="input-group">
-              <div id="search-bar"></div>
+            <div class="input-group" style="width: 400px">
+              <div id="search-bar" class="pull-right"></div>
             </div>
           </div>
         </div><!--/.navbar-collapse -->
@@ -48,8 +48,8 @@
             <div class="col-md6 main-message" id="main-message">
                 <h1>Cloujera lets you do a fine-grained search for spoken words in <a href="http://www.coursera.org" target="_blank">Coursera's</a> videos</h1>
                 <hr/>
-                <h4>Try searching for "globular cluster", "poetry" or "quicksort"</h4>
-                <p>This is built using <a href="http://clojure.org/" target="_blank">Clojure</a>, <a href="https://github.com/weavejester/compojure" target="_blank">Compojure</a>, <a href="https://github.com/cgrand/enlive" target="_blank">Enlive</a>, <a href="https://github.com/swannodette/om" target="_blank">Om</a>, <a href="http://redis.io/" target="_blank">Redis</a>, <a href="http://www.elasticsearch.org" target="_blank">ElasticSearch</a> and a lot of
+                <h4>Try searching for "quicksort", "post modernism" or even "globular cluster"</h4>
+                <p>Cloujera was built in 48 hours using <a href="http://clojure.org/" target="_blank">Clojure</a>, <a href="https://github.com/clojure/clojurescript" target="_blank">ClojureScript</a>, <a href="https://github.com/cgrand/enlive" target="_blank">Enlive</a>, <a href="https://github.com/swannodette/om" target="_blank">Om</a>, <a href="http://www.elasticsearch.org" target="_blank">ElasticSearch</a> and a lot of
                     sweats, tears, trial and error.</p>
             </div>
       </div>
@@ -57,7 +57,7 @@
             <div class="col-md6 main-message" style="display: none;" id="no-results-found">
                 <h2>Ooops!! No results found</h2>
                 <hr/>
-                <h4>Seems like we haven't got any results for that yet.</h4>
+                <h4>Seems like we haven't got any results for that yet. Have you heard of Google?</h4>
             </div>
       </div>
 

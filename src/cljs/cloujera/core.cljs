@@ -33,6 +33,7 @@
 (defn handle-search [app owner]
   (let [search-query (.-value (om/get-node owner "search-query"))]
     (println (str "Search query is: " search-query))
+    (swap! app-state assoc :videos [])
     (hide-main-msg)
     (hide-not-found-msg) ;; this is terrible, sorry
     (rest-client/search search-query
@@ -54,13 +55,14 @@
     (render-state [this state]
       (dom/input #js {:type "text"
                       :className "form-control"
+                      :placeholder "what do you want to learn about today?"
                       :ref "search-query"
                       :value (:text state)
                       :onKeyPress #(when (== (.-keyCode %) 13)
                                 (handle-search app owner))
                       :onChange #(handle-input % owner state)}
       (dom/span #js {:className "input-group-btn"}
-           (dom/button #js {:className "btn btn-default"
+           (dom/button #js {:className "btn btn-default search-button"
                             :type "button"
                             :onClick #(handle-search app owner)}
                             "Search"))))))
