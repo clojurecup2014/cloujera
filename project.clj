@@ -24,10 +24,12 @@
                  [clojurewerkz/elastisch "2.1.0-beta7"] ;; for persitance
                  [com.taoensso/carmine "2.7.0" :exclusions [org.clojure/clojure]]] ;; for caching
 
+  :plugins [[lein-cljsbuild "1.0.4-SNAPSHOT"]
+            [lein-ring "0.8.11"]]
 
+  :ring {:handler cloujera.core/app}
 
-
-  :plugins [[lein-cljsbuild "1.0.4-SNAPSHOT"]]
+  :min-lein-version "2.0.0"
 
   :source-paths ["src/clj"]
   :resource-paths ["resources"]
@@ -42,4 +44,6 @@
                 :source-map true}}]}
   :main ^:skip-aot cloujera.core
   :target-path "target/%s"
-  :profiles {:uberjar {:aot :all}})
+  :profiles {:uberjar {:aot :all}
+             :dev {:dependencies [[javax.servlet/servlet-api "2.5"]
+                                  [ring-mock "0.1.5"]]}})

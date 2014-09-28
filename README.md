@@ -1,20 +1,12 @@
-###Build and test Locally
+### Build and test Locally
 
 First compile the clojurescript
-
 `lein cljsbuild once`
 
-Then build the uberjar
+Start a ring server
+`lein ring server`
 
-`lein uberjar`
-
-Then try it out locally
-
-`java -jar target/uberjar/cloujera-0.1.0-SNAPSHOT-standalone.jar`
-
-Hit localhost:8080 in your browser.
-
-###Deploying to production
+### Deploying to production
 
 *important* our local code references our API at 127.0.0.1:8080 but for production we want that reference to be cloujera.clojurecup.com:80 so go to `rest-client.cljs` and uncomment the appropriate line like so:
 
