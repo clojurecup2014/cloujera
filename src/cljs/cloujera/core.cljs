@@ -19,7 +19,6 @@
     (println (str "Search query is: " search-query))
     (rest-client/search search-query
                         (fn [response]
-                           (println "Server response:" response)
                            (swap! app-state assoc :videos (get response "results"))))))
 
 ;; search bar component
@@ -63,10 +62,10 @@
 
 ;; result pane component
 (defn display-video [video]
-  (println(str "title: " (get video "title") ", id: " (get video "id")))
+  (println(str "title: " (get video "title") ", id: " (get video "id") ", url: " (get video "video-url")))
   (dom/div #js {:className "row video-item"}
       (dom/div #js {:className "col-md-8"}
-         (dom/video #js {:src "http://d396qusza40orc.cloudfront.net/susdev/recoded_videos%2Fsusdev_3_01.da6ff370809111e3af279b48f4519db4.webm"
+         (dom/video #js {:src (get video "video-url")
                          :controls true}))
       (display-info-pane video)))
 
