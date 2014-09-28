@@ -22,7 +22,7 @@
   (s/validate Course c))
 
 (def Video
-  "The schema vor a Coursera Video"
+  "The schema for a Coursera Video"
   {:id s/Str
    :title s/Str
    :transcript s/Str
