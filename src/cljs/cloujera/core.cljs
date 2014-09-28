@@ -62,7 +62,7 @@
                                 (handle-search app owner))
                       :onChange #(handle-input % owner state)}
       (dom/span #js {:className "input-group-btn"}
-           (dom/button #js {:className "btn btn-default"
+           (dom/button #js {:className "btn btn-default search-button"
                             :type "button"
                             :onClick #(handle-search app owner)}
                             "Search"))))))

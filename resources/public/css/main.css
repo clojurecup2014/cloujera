@@ -53,7 +53,7 @@ hr {
 }
 
 .main-message {
-  max-width: 650px;
+  max-width: 820px;
   margin: 150px auto;
   text-align: center;
 }
@@ -75,6 +75,17 @@ hr {
 
 #search-bar input.form-control {
   width: 299px;
+  border-radius: 0px;
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+
+#search-bar .search-button {
+  background-color: #3a3f41;
+  color: white;
+  border-radius: 0px;
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
 }
 
 .logo {
