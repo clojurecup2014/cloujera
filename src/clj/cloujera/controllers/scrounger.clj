@@ -9,4 +9,5 @@
 (defn search [query]
   (let [video (s/validate video/Video video/fake-video)]
     (map video/valid-video?
-         (take 25 (search/all)))))
+         (search/term-matching query))))
+

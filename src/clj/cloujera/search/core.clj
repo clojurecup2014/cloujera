@@ -29,8 +29,10 @@
   (video/valid-video? video)
   (esd/put conn "videos" "video" (generate-id video) video) video))
 
-(defn fuzzy [term]
-  (extract-results (esd/search conn "videos" "video" :query (q/fuzzy :transcript {:value term :min_similarity 3}))))
+(defn term-matching [term]
+  (extract-results (esd/search conn "videos" "video" :query (q/match :transcript term))))
 
 (defn all []
   (extract-results (esd/search conn "videos" "video" :query (q/match-all {}))))
+
+
