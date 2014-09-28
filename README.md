@@ -1,10 +1,10 @@
 ### Build and test Locally
 
-First compile the clojurescript
+1. Compile the clojurescript
 `lein cljsbuild once`
 
-Start a ring server
-`lein ring server`
+2. Start the app
+`lein run`
 
 ### Deploying to production
 
@@ -182,7 +182,3 @@ sudo start elasticsearch
 sudo restart elasticsearch
 sudo stop elasticsearch
 ```
-
-
-
-
