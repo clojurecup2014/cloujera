@@ -63,7 +63,8 @@
       (dom/p nil
           (dom/a #js {:href (get video "_link")
                       :target "_blank"}
-                   (get video "title")))))
+                   (get video "title")))
+      (dom/p #js {:dangerouslySetInnerHTML #js {:__html (get video "highlighted-transcript")}} nil)))
 
 ;; result pane component
 (defn display-video [video]
