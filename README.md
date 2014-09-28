@@ -12,18 +12,52 @@ Then try it out locally
 
 `java -jar target/cloujera-0.1.0-SNAPSHOT-standalone.jar`
 
-Hit localhost:5000 in your browser.
+Hit localhost:8080 in your browser.
 
-### Server Installation
+###Deploying to production
 
-Keigo's notes
+*important* our local code references our API at 127.0.0.1:8080 but for production we want that reference to be cloujera.clojurecup.com:80 so go to `rest-client.cljs` and uncomment the appropriate line like so:
 
 ```
-upload it to /tmp
-then moved it to /home/cloujera
-then `sudo su cloujera`
-and from /home/cloujera `java -jar cloujera...`
+#_(def ^:private uri "http://127.0.0.1:8080")
+(def ^:private uri "http://cloujera.clojurecup.com:80")
+
 ```
+Now do a cljs compile with `lein cljsbuild once`
+
+then, build the uberjar locally
+
+`lein uberjar`
+
+Once you've done this you can reverse the comments in the code to go back to deving.
+(Yes, we need a config file for this, but I've parked it until later)
+
+An uberjar will magically appear in ./target
+Now scp it to the production server
+
+`scp -i ~/.ssh/id_rsa_clojurecup target/cloujera-0.1.0-SNAPSHOT-standalone.jar cloudsigma@178.22.65.147:/tmp `
+
+This will put the file in the tmp directory, now ssh to the box
+
+`ssh cloudsigma@178.22.65.147 -i ~/.ssh/id_rsa_clojurecup`
+
+and move the file from /tmp to /home/cloujera (password is in slack)
+
+`sudo mv /tmp/cloujera-0.1.0-SNAPSHOT-standalone.jar /home/cloujera`
+
+become the cloujera user
+
+`sudo su cloujera`
+
+go to home and chown the file
+
+`sudo chown cloujera:cloujera cloujera-0.1.0-SNAPSHOT-standalone.jar`
+
+run it!
+
+`java -jar cloujera-0.1.0-SNAPSHOT-standalone.jar`
+
+check cloujera.clojurecup.com
 
 ### Server Configuration
 
@@ -92,24 +126,24 @@ Then create `/etc/init/elasticsearch.conf` with the following script:
 
 ```
 # ElasticSearch upstart script
- 
+
 description     "ElasticSearch service"
- 
+
 start on (net-device-up
           and local-filesystems
           and runlevel [2345])
- 
+
 stop on runlevel [016]
- 
+
 respawn
- 
+
 respawn limit 10 30
- 
+
 # NB: Upstart scripts do not respect
 # /etc/security/limits.conf, so the open-file limits
 # settings need to be applied here.
 limit nofile 32000 32000
- 
+
 setuid elasticsearch
 setgid elasticsearch
 exec /usr/share/elasticsearch/bin/elasticsearch -f -Des.default.config=/etc/elasticsearch/elasticsearch.yml -Des.default.path.home=/usr/share/elasticsearch/ -Des.default.path.logs=/var/log/elasticsearch/ -Des.default.path.data=/var/lib/elasticsearch/ -Des.default.path.work=/tmp/elasticsearch -Des.default.path.conf=/etc/elasticsearch
