@@ -77,6 +77,7 @@ sudo update-rc.d -f elasticsearch remove
 
 Then create `/etc/init/elasticsearch.conf` with the following script:
 
+
 ```
 # ElasticSearch upstart script
 
