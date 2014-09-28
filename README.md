@@ -1,3 +1,7 @@
+Cloujera is a fine-grained, spoken word search over Coursera's videos
+
+Cloujera does this by performing full text searches on the transcripts of videos on [coursera](http://coursera.org).
+
 ### Build and test Locally
 
 1. Compile the clojurescript
