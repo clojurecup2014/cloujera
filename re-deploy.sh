@@ -27,4 +27,4 @@ echo "==> emptying Logfile"
 cat /dev/null > LOGFILE
 
 echo "==> starting"
-sudo ` /home/cloujera/bin/lein run > LOGFILE 2>&1 & `
+sudo sh -c '/home/cloujera/bin/lein run > LOGFILE 2>&1 &'
