@@ -4,6 +4,7 @@ IFS=$'\n\t'
 
 sudo -v
 
+git checkout .
 git pull
 
 # comment out
@@ -12,9 +13,9 @@ sed -i 's/;(def ^:private uri "http:\/\/cloujera.clojurecup.com:80")/(def ^:priv
 # comment in
 sed -i 's/(def ^:private uri "http:\/\/127.0.0.1:8080")/;(def ^:private uri "http:\/\/127.0.0.1:8080")/' ./src/cljs/cloujera/rest-client.cljs
 
-export LEIN_ROOT="Something"
 
 /home/cloujera/bin/lein cljsbuild once
 
 
-sudo /home/cloujera/bin/lein run &
+export LEIN_ROOT="is set"
+sudo /home/cloujera/bin/lein run > /var/log/cloujera.log 2>&1 &
