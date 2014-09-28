@@ -29,8 +29,6 @@
 
 (defn save [video]
   (let [identifier (generate-id video)]
-    (info (str "START: saving" identifier))
-    (video/valid-video? video)
     (esd/put conn "videos" "video" identifier video) video))
 
 (defn term-matching [term]
