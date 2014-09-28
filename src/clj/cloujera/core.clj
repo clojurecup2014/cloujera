@@ -10,4 +10,4 @@
       (middleware/wrap-json-response)))
 
 (defn -main []
-  (server/run-server app {:port 80}))
+  (server/run-server app {:port 8080}))
