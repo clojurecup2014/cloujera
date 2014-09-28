@@ -54,6 +54,7 @@ hr {
 
 .navbar-form {
     background-color: #3a3f41;
+    overflow: hidden;
 }
 
 .main-message {
