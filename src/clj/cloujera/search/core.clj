@@ -5,6 +5,8 @@
             [clojurewerkz.elastisch.rest.response :as esrsp]
             [clojurewerkz.elastisch.rest.index    :as esi]
 
+            [clojure.string :as string]
+
             [cloujera.models.video                :as video]))
 
 (def conn (esr/connect "http://127.0.0.1:9200"))
@@ -16,8 +18,19 @@
 (defn- generate-id [video]
   (str (get-in video [:course :id]) "-" (:id video)))
 
+(defn- elastic-highlight->highlighted-transcript [eh]
+  (string/join " ... " eh))
+
+(defn- extract-video-result [elastic-video]
+  (let [video (:_source elastic-video)
+        elastic-highlight (get-in elastic-video [:highlight :transcript])]
+    (assoc video
+           :highlighted-transcript
+           (elastic-highlight->highlighted-transcript elastic-highlight))))
+
 (defn- extract-results [videos]
-  (map :_source (get-in videos [:hits :hits])))
+  (let [found-videos (get-in videos [:hits :hits])]
+    (map extract-video-result found-videos)))
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; PUBLIC INTERFACE
@@ -27,10 +40,14 @@
   (let [identifier (generate-id video)]
     (esd/put conn "videos" "video" identifier video) video))
 
+
 (defn term-matching [term]
-  (extract-results (esd/search conn "videos" "video" :query (q/match :transcript term))))
+  (extract-results (esd/search conn "videos" "video"
+                               :query (q/match :transcript term)
+                               :highlight {:fields {:transcript {}}})))
 
 (defn all []
   (extract-results (esd/search conn "videos" "video" :query (q/match-all {}))))
 
+(map video/valid-video? (term-matching "Calculus"))
 
