@@ -14,13 +14,53 @@ Then try it out locally
 
 Hit localhost:5000 in your browser.
 
+### Server Installation
+
+Keigo's notes
+
+```
+upload it to /tmp
+then moved it to /home/cloujera
+then `sudo su cloujera`
+and from /home/cloujera `java -jar cloujera...`
+```
 
 ### Server Configuration
 
-For installation/configuration of Redis used:
+For installation/configuration of Redis I used: https://gist.github.com/bdotdub/714533
 
-https://gist.github.com/bdotdub/714533
+To install:
 
+```
+sudo apt-get install redis-server
+```
+
+To disable the default `init.d` script for redis:
+
+```
+sudo update-rc.d redis-server disable
+```
+
+Then create `/etc/init/redis-server.conf` with the following script:
+
+```
+description "redis server"
+
+start on runlevel [23]
+stop on shutdown
+
+exec sudo -u redis /usr/bin/redis-server /etc/redis/redis.conf
+
+respawn
+```
+
+Commands are:
+
+```
+sudo start redis-server
+sudo restart redis-server
+sudo stop redis-server
+```
 
 #### Elastic Search
 
@@ -48,7 +88,7 @@ Disable the init script
 sudo update-rc.d -f elasticsearch remove
 ```
 
-Then create `/etc/init/redis-server.conf` with the following script:
+Then create `/etc/init/elasticsearch.conf` with the following script:
 
 ```
 # ElasticSearch upstart script
@@ -78,9 +118,9 @@ exec /usr/share/elasticsearch/bin/elasticsearch -f -Des.default.config=/etc/elas
 Commands are:
 
 ```
-sudo start redis-server
-sudo restart redis-server
-sudo stop redis-server
+sudo start elasticsearch
+sudo restart elasticsearch
+sudo stop elasticsearch
 ```
 
 
