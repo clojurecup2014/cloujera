@@ -56,6 +56,8 @@
                       :className "form-control"
                       :ref "search-query"
                       :value (:text state)
+                      :onKeyPress #(when (== (.-keyCode %) 13)
+                                (handle-search app owner))
                       :onChange #(handle-input % owner state)}
       (dom/span #js {:className "input-group-btn"}
            (dom/button #js {:className "btn btn-default"
