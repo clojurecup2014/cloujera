@@ -1,4 +1,4 @@
-Fine grained, spoken word search for educational videos.
+Cloujera is a fine-grained, spoken word search over Coursera's videos
 
 Cloujera does this by performing full text searches on the transcripts of videos on [coursera](http://coursera.org).
 
