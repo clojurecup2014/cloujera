@@ -5,11 +5,7 @@
             [clojurewerkz.elastisch.rest.response :as esrsp]
             [clojurewerkz.elastisch.rest.index    :as esi]
 
-            [taoensso.timbre :as timbre]
-
             [cloujera.models.video                :as video]))
-
-(timbre/refer-timbre) ;; logging aliases
 
 (def conn (esr/connect "http://127.0.0.1:9200"))
 

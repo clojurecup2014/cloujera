@@ -1,7 +1,5 @@
 (ns cloujera.controllers.burglar
-  (:require [cloujera.burglar.core :as burglar]
-            [taoensso.timbre :as timbre]))
-(timbre/refer-timbre) ;; logging aliases
+  (:require [cloujera.burglar.core :as burglar]))
 
 (def lecture-urls
   ["https://class.coursera.org/modernpoetry-003/lecture"
@@ -13,10 +11,6 @@
    "https://class.coursera.org/ml-007/lecture"
    ])
 
-(defn go []
-  (-> (pmap burglar/raid lecture-urls) (flatten)))
+(defn go [] (-> (pmap burglar/raid lecture-urls) (flatten)))
 
-(defn raid-url [lecture-url]
-  (do
-    (info (str "START: raid (scraping) on " lecture-url))
-    (burglar/raid lecture-url)))
+(defn raid-url [lecture-url] (burglar/raid lecture-url))
