@@ -13,6 +13,8 @@
                  [ring/ring-json "0.2.0"] ;; for serializing
                  [http-kit "2.1.19"]
 
+                 [com.taoensso/timbre "3.3.1"] ;; for logging
+
                  [clj-http "1.0.0"] ;; for http getting and cookieing
 
                  [enlive "1.1.5"] ;; for scraping
