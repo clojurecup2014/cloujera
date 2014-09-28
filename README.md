@@ -1,3 +1,7 @@
+Fine grained, spoken word search for educational videos.
+
+Cloujera does this by performing full text searches on the transcripts of videos on [coursera](http://coursera.org).
+
 ### Build and test Locally
 
 1. Compile the clojurescript
