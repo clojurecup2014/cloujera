@@ -14,9 +14,7 @@
    ])
 
 (defn go []
-  (do
-    (info "START: raid (scraping) on all hardcoded urls")
-    (-> (pmap burglar/raid lecture-urls) (flatten))))
+  (-> (pmap burglar/raid lecture-urls) (flatten)))
 
 (defn raid-url [lecture-url]
   (do

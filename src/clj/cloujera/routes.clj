@@ -20,13 +20,9 @@
                              empty-search-error
                              (ring/response (construct-search-response query))))
 
-  (GET "/burglar/go" [] (do
-                          (future (burglar/go))
-                          (raid-commenced-response)))
+  (GET "/burglar/go" [] (burglar/go))
 
-  (POST "/burglar/raid" {body :body} (do
-                                       (future (burglar/raid-url (:url body)))
-                                       (raid-commenced-response)))
+  (POST "/burglar/raid" {body :body} (burglar/raid-url (:url body)))
 
   (route/resources "/")
   (route/not-found "Keep movin', there ain't nothin' to see here."))
