@@ -17,6 +17,8 @@
 
                  [cheshire "5.3.1"] ;; JSON deserializing
 
+                 [midje "1.6.3"] ;; for testing :P
+
                  [clojurewerkz/elastisch "2.1.0-beta7"] ;; for persitance
                  [com.taoensso/carmine "2.7.0" :exclusions [org.clojure/clojure]]] ;; for caching
 
