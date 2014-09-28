@@ -14,5 +14,3 @@
 (defn go [] (pmap burglar/raid lecture-urls))
 
 (defn raid-url [lecture-url] (burglar/raid lecture-url))
-
-(go)
