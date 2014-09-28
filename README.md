@@ -55,7 +55,11 @@ go to home and chown the file
 
 run it!
 
-`java -jar cloujera-0.1.0-SNAPSHOT-standalone.jar`
+```
+sudo start cloujera
+sudo restart cloujera
+sudo stop cloujera
+```
 
 check cloujera.clojurecup.com
 
