@@ -18,6 +18,7 @@
     <![endif]-->
   </head>
   <body>
+
      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -42,35 +43,29 @@
     </div>
 
     <div class="container">
-      <div id="main-message">
-          <h1>Cloujera is a fine-grained, spoken word search over <a href="http://www.coursera.org" target="_blank">Coursera's</a> videos</h1>
-          <hr/>
-          <h4>Try searching for "poetry" or "development"</h4>
-          <p>This is built using <a href="http://clojure.org/" target="_blank">Clojure</a>, <a href="https://github.com/weavejester/compojure" target="_blank">Composure</a>, <a href="https://github.com/cgrand/enlive" target="_blank">Enlive</a>, <a href="https://github.com/swannodette/om" target="_blank">Om</a>, <a href="http://redis.io/" target="_blank">Redis</a>, <a href="http://www.elasticsearch.org" target="_blank">ElasticSearch</a> and a lot of
-              sweats, tears, trial and error. We scrape <a href="http://www.coursera.org" target="_blank">Coursera's</a>
-              video library so you don't have to!</p>
+
+      <div class="row">
+            <div class="col-md6 main-message" id="main-message">
+                <h1>Cloujera lets you do a fine-grained search for spoken words in <a href="http://www.coursera.org" target="_blank">Coursera's</a> videos</h1>
+                <hr/>
+                <h4>Try searching for "quicksort" or "development"</h4>
+                <p>This is built using <a href="http://clojure.org/" target="_blank">Clojure</a>, <a href="https://github.com/weavejester/compojure" target="_blank">Composure</a>, <a href="https://github.com/cgrand/enlive" target="_blank">Enlive</a>, <a href="https://github.com/swannodette/om" target="_blank">Om</a>, <a href="http://redis.io/" target="_blank">Redis</a>, <a href="http://www.elasticsearch.org" target="_blank">ElasticSearch</a> and a lot of
+                    sweats, tears, trial and error. We scrape <a href="http://www.coursera.org" target="_blank">Coursera's</a>
+                    video library so you don't have to!</p>
+            </div>
       </div>
+      <div class="row">
+            <div class="col-md6 main-message" style="display: none;" id="no-results-found">
+                <h2>Ooops!! No results found </h2>
+                <hr/>
+                <h4>Seems like we haven't scraped that page yet, have you heard of Google?</h4>
+            </div>
+      </div>
+
       <div class="row">
         <div class="col-md-12">
           <div id="result-pane">
           </div>
-
-          <!-- video example
-          <div class="row video-item">
-            <div class="col-md-8">
-              <video src="http://d396qusza40orc.cloudfront.net/susdev/recoded_videos%2Fsusdev_3_01.da6ff370809111e3af279b48f4519db4.webm" controls>
-                Your browser does not support the <code>video</code> element.
-              </video>
-            </div>
-            <div class="col-md-4 info-pane">
-                <h3><a href="https://class.coursera.org/susdev-00" target="_blank">The Age of Sustainable Development</a></h3>
-                <hr>
-                <p><a href="" target="_blank">Lecture 3 - Chapter 2: The industrial revolution starts in England</a></p>
-                <p>Some <em>hightlighted</em> text</p>
-            </div>
-          </div>
-
-          -->
 
         </div>
       </div>

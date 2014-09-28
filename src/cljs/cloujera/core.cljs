@@ -11,8 +11,20 @@
 
 (defn hide-main-msg []
   (let [main-msg (.getElementById js/document (name "main-message"))]
-      (println (.getElementById js/document (name "main-message")))
       (set! (-> main-msg .-style .-display ) "none")))
+
+(defn show-not-found-msg []
+  (let [main-msg (.getElementById js/document (name "no-results-found"))]
+      (set! (-> main-msg .-style .-display ) "block")))
+
+;; this is shity, we know, but is 20:44, less than 4 hours to go :/
+(defn hide-not-found-msg []
+  (let [main-msg (.getElementById js/document (name "no-results-found"))]
+      (set! (-> main-msg .-style .-display ) "none")))
+
+
+(defn no-results-msg []
+  ())
 
 ;; handlers
 (defn handle-input [e owner {:keys [text]}]
@@ -22,9 +34,13 @@
   (let [search-query (.-value (om/get-node owner "search-query"))]
     (println (str "Search query is: " search-query))
     (hide-main-msg)
+    (hide-not-found-msg) ;; this is terrible, sorry
     (rest-client/search search-query
                         (fn [response]
-                           (swap! app-state assoc :videos (get response "results"))))))
+                           (let [videos (get response "results")]
+                             (if (empty? videos)
+                                 (show-not-found-msg)
+                                 (swap! app-state assoc :videos (get response "results"))))))))
 
 ;; search bar component
 (defn search-bar-view [app owner]
