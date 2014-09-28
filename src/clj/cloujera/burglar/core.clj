@@ -6,8 +6,7 @@
             [cloujera.burglar.parser.course :as course-parser]
             [cloujera.burglar.parser.core :as parser]
 
-            [cloujera.models.video :as video]
-            [schema.core :as schema]))
+            [cloujera.models.video :as video]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (def username "vise890+cloujera@gmail.com")
