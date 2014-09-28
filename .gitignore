@@ -4,6 +4,7 @@ pom.xml
 /classes/
 /resources/public/js/cloujera.js
 /resources/public/js/out
+dump.rdb
 /target/
 .lein-deps-sum
 .lein-repl-history

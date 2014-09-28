@@ -11,9 +11,20 @@
 
 (def conn (esr/connect "http://127.0.0.1:9200"))
 
+;;;;;;;;;;;;;;;;;;;;
+;; PRIVATE INTERFACE
+;;;;;;;;;;;;;;;;;;;;
+
+(defn- generate-id [video]
+  (str (get-in video [:course :id]) "-" (:id video)))
+
+;;;;;;;;;;;;;;;;;;;;
+;; PUBLIC INTERFACE
+;;;;;;;;;;;;;;;;;;;;
+
 (defn save [video] (do
   (video/valid-video? video)
-  (esd/create conn "videos" "video" video)))
+  (esd/put conn "videos" "video" (generate-id video) video)))
 
 (defn fuzzy [term]
   (esd/search conn "videos" "video" :query (q/fuzzy :transcript {:value term :min_similarity 3})))
@@ -21,11 +32,11 @@
 (defn all []
   (esd/search conn "videos" "video" :query (q/match-all {})))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;
 ;; TEST
-;;(esi/create conn "videos")
-;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;
 
+;;(generate-id video/fake-video)
 ;;(save-video video/fake-video)
 ;;(fuzzy "The world")
 ;;(all)
