@@ -49,3 +49,20 @@ Forwarded ports:
 - 6379 : redis
 
 So you can use redis with `redis-cli` for example....
+
+# Deploy (sort of)
+The first time:
+```bash
+$ ssh cloudmachine
+$ git clone ..
+$ cd cloujera
+$ sudo ./provision.sh
+```
+
+```bash
+$ lein cljs build once prod
+$ # FIXME: lein uberjar
+$ # TODO: dockerize
+$ # TODO: run
+```
+
