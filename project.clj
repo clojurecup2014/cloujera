@@ -33,14 +33,18 @@
   :source-paths ["src/clj"]
   :resource-paths ["resources"]
 
-  :cljsbuild {
-    :builds [{:id "cloujera"
-              :source-paths ["src/cljs"]
-              :compiler {
-                :output-to "resources/public/js/cloujera.js"
-                :output-dir "resources/public/js/out"
-                :optimizations :none
-                :source-map true}}]}
+  :cljsbuild {:builds [{:id "dev"
+                        :source-paths ["src/cljs" "dev-config"]
+                        :compiler {:output-to "resources/public/js/cloujera-dev.js"
+                                   :output-dir "resources/public/js/out-dev"
+                                   :optimizations :none
+                                   :source-map true}}
+                       {:id "prod"
+                        :source-paths ["src/cljs" "prod-config"]
+                        :compiler {:output-to "resources/public/js/cloujera.js"
+                                   :optimizations :advanced
+                                   :pretty-print false}}]}
+
   :main ^:skip-aot cloujera.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}}

@@ -2,6 +2,8 @@ pom.xml
 *jar
 /lib/
 /classes/
+/resources/public/js/cloujera-dev.js
+/resources/public/js/out-dev
 /resources/public/js/cloujera.js
 /resources/public/js/out
 dump.rdb
