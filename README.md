@@ -1,9 +1,8 @@
-Cloujera
-==============
+# Cloujera
 
 Cloujera lets you do a fine-grained search for spoken words in Coursera's videos. It does this by performing full text searches on the transcripts of videos on [coursera](http://coursera.org).
 
-### Build and test Locally
+# Build and test Locally
 
 1. Compile the clojurescript
 `lein cljsbuild once`
@@ -12,7 +11,7 @@ Cloujera lets you do a fine-grained search for spoken words in Coursera's videos
 `lein run`
 
 
-### Setup Elastic Search Locally
+## Setup Elastic Search Locally
 
 Install elastic search:
 
@@ -40,57 +39,13 @@ Run using
 elasticsearch
 
 ```
-
-
-### Deploying to production
-
-*important* our local code references our API at 127.0.0.1:8080 but for production we want that reference to be cloujera.clojurecup.com:80 so go to `rest-client.cljs` and uncomment the appropriate line like so:
-
+# Vagrant
+```bash
+$ vagrant up
 ```
-#_(def ^:private uri "http://127.0.0.1:8080")
-(def ^:private uri "http://cloujera.clojurecup.com:80")
+Forwarded ports:
+- 9200 : elasticsearch http
+- 9300 : elasticsearch
+- 6379 : redis
 
-```
-Now do a cljs compile with `lein cljsbuild once`
-
-then, build the uberjar locally
-
-`lein uberjar`
-
-Once you've done this you can reverse the comments in the code to go back to deving.
-(Yes, we need a config file for this, but I've parked it until later)
-
-An uberjar will magically appear in ./target
-Now scp it to the production server
-
-`scp -i ~/.ssh/id_rsa_clojurecup target/cloujera-0.1.0-SNAPSHOT-standalone.jar cloudsigma@178.22.65.147:/tmp `
-
-This will put the file in the tmp directory, now ssh to the box
-
-`ssh cloudsigma@178.22.65.147 -i ~/.ssh/id_rsa_clojurecup`
-
-and move the file from /tmp to /home/cloujera (password is in slack)
-
-`sudo mv /tmp/cloujera-0.1.0-SNAPSHOT-standalone.jar /home/cloujera`
-
-become the cloujera user
-
-`sudo su cloujera`
-
-go to home and chown the file
-
-`sudo chown cloujera:cloujera cloujera-0.1.0-SNAPSHOT-standalone.jar`
-
-run it!
-
-```
-sudo start cloujera
-sudo restart cloujera
-sudo stop cloujera
-```
-
-check cloujera.clojurecup.com
-
-### Server Configuration
-
-... Can be found in the [SERVER CONFIGURATION README](./SERVER_CONFIGURATION_README.md)
+So you can use redis with `redis-cli` for example....

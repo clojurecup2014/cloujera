@@ -10,3 +10,5 @@ dump.rdb
 .lein-repl-history
 .lein-plugins/
 .nrepl-port
+
+.vagrant
