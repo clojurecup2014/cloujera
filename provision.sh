@@ -11,7 +11,8 @@ curl -sSL https://get.docker.com/ubuntu/ | sudo sh
 
 echo "==> setting up ElasticSearch"
 sudo docker pull dockerfile/elasticsearch
-sudo docker run -d -p 9200:9200 -p 9300:9300 dockerfile/elasticsearch
+sudo docker run --name elasticsearch -d -p 9200:9200 -p 9300:9300 dockerfile/elasticsearch
 
 echo "==> setting up REDIS"
-docker run --name cloujera-redis -d redis redis-server --appendonly yes
+sudo docker pull dockerfile/redis
+sudo docker run --name redis -d -p 6379:6379 dockerfile/redis
