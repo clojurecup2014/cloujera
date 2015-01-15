@@ -86,4 +86,19 @@ You should see redis, elasticsearch and cloujera running
 
 ### Checking the cloujera logs
 
-```bash 
+```bash
+$ vagrant ssh
+
+$ sudo docker exec cloujera cat /var/cloujera_stdout.log
+$ sudo docker exec cloujera cat /var/cloujera_stderr.log
+```
+
+### Checking elasticsearch health
+
+Visit `http://localhost:9200/, you should see `status: 200`
+
+
+### Checking redis Running
+
+`redis-cli` will drop you into a redis shell. Some useful commands are:
+`INFO`, `MONITOR`, `HELP`, `HELP @server`.
