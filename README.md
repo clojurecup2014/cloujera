@@ -28,8 +28,27 @@ Forwarded ports:
 
 So you can use redis with `redis-cli` for example....
 
+## Scraping courses
 
-# Deploy (sort of, still TODO)
+Visiting `http://cloujera.whatever/burglar/go` scrapes some 10 courses to get
+you started;
+
+To scrape another course, you need to:
+0. Visit the cloujera session API
+   `https://api.coursera.org/api/catalog.v1/sessions` and choose a course
+1. Sign up for the course and agree to honor code **manually** for the
+   `vise890+cloujera@gmail.com` user
+3. Find the video lecture URL
+2. Perform an http `POST http://cloujera.whatever/burglar/raid` with this
+   paylod (JSON):
+   ```
+   { "url": <video lectures URL> }
+   e.g.
+   { "url": "https://class.coursera.org/apcalcpart1-001/lecture" }
+   ```
+
+
+## Deploy (sort of, still TODO)
 
 The first time:
 ```bash
