@@ -19,4 +19,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # provisioning: docker, elasticsearch, redis
   config.vm.provision "shell", path: "./provision.sh"
+
+  config.vm.provider "virtualbox" do |v|
+      v.memory = 1024
+  end
 end

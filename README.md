@@ -19,13 +19,13 @@ videos on [coursera](http://coursera.org).
 4. On the first run, visit `http://127.0.0.1:8080/burglar/go` to seed the db
    (it will error out ridiculously if you don't do this!)
 
-### Testing docker inside Vagrant
+
+### Testing dockerized cloujera inside Vagrant
 ```bash
 $ vagrant ssh
 $ cd /vagrant
+$ ./deploy.sh
 ```
-
-Then follow the steps at [Deploying Cloujera](#deploying-cloujera)
 
 
 ### Vagrant Setup
@@ -66,18 +66,24 @@ $ cd cloujera
 $ sudo ./provision.sh
 ```
 
-### Deploying cloujera <a name="deploying-cloujera"></a>
+
+### Deploying cloujera
 
 ```bash
-$ git pull
-$ lein cljs build once
-$ lein uberjar
-$ sudo docker build -t cloujera ./
-
-$ sudo docker run -d -P \
-   -p 80:8080 \
-   --name cloujera \
-   --link redis:redis \
-   --link elasticsearch:elasticsearch \
-   cloujera
+# in the cloujera directory...
+$ ./deploy.sh
 ```
+
+## Troubleshooting
+
+Ensure that all the containers are running
+```bash
+$ vagrant ssh
+$ sudo docker ps -a
+```
+You should see redis, elasticsearch and cloujera running
+
+
+### Checking the cloujera logs
+
+```bash 
