@@ -6,6 +6,10 @@ sudo -v
 
 CLOUJERA_CONTAINER_NAME="cloujera"
 
+# export the IPs for the elasticsearch and redis containers
+export ELASTICSEARCH_CONTAINER_IP=$(sudo docker inspect --format='{{.NetworkSettings.IPAddress}}' elasticsearch)
+export REDIS_CONTAINER_IP=$(sudo docker inspect --format='{{.NetworkSettings.IPAddress}}' redis)
+
 echo "==> Removing existing cloujera container"
 # FIXME: i don't know if this actually works
 container_id=$(sudo docker ps -qa --filter name=$CLOUJERA_CONTAINER_NAME)

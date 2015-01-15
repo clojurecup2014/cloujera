@@ -1,3 +1,11 @@
+# TODO
+- lookup for the redis addr in the env instead of defaulting to localhost
+  - make carmine respect this. (This should be a pain)
+- make a `profiles.clj` with env variables for the `dev` environment **only**
+  - these will be used when `lein repl`
+- the `deploy.sh` script uses uberjar so it gets vars for the `uberjar` profile
+  those not being there, it should get them from the environment (which should be already set at top of `deploy.sh`)
+
 # Cloujera
 
 Cloujera lets you do a fine-grained search for spoken words in Coursera's

@@ -23,10 +23,13 @@
 
                  [midje "1.6.3"] ;; for testing :P
 
+                 [environ "1.0.0"]
+
                  [clojurewerkz/elastisch "2.1.0-beta7"] ;; for persitance
                  [com.taoensso/carmine "2.7.0" :exclusions [org.clojure/clojure]]] ;; for caching
 
-  :plugins [[lein-cljsbuild "1.0.4-SNAPSHOT"]]
+  :plugins [[lein-cljsbuild "1.0.4-SNAPSHOT"]
+            [lein-environ "1.0.0"]]
 
   :min-lein-version "2.0.0"
 
