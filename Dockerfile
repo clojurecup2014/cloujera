@@ -10,4 +10,4 @@ ADD ./target/uberjar/cloujera-0.1.0-SNAPSHOT-standalone.jar /srv/cloujera.jar
 
 EXPOSE 8080
 
-CMD ["sudo", "supervisord", "-c", "/etc/supervisord.conf"]
+CMD ["sudo", "supervisord", "--nodaemon", "-c", "/etc/supervisord.conf"]
