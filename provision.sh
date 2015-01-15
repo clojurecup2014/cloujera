@@ -9,6 +9,15 @@ sudo apt-get --assume-yes upgrade
 echo "==> installing docker"
 curl -sSL https://get.docker.com/ubuntu/ | sudo sh
 
+echo "==> installing leiningen"
+sudo apt-get --assume-yes install default-jre
+wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+sudo su -c "chown root:root ./lein && chmod a+x ./lein"
+sudo su -c "mv ./lein /usr/local/bin/"
+
+echo "==> installing htop"
+sudo apt-get --assume-yes install htop
+
 echo "==> setting up ElasticSearch"
 sudo docker pull dockerfile/elasticsearch
 sudo docker run --name elasticsearch --restart=always -d -p 9200:9200 -p 9300:9300 dockerfile/elasticsearch
