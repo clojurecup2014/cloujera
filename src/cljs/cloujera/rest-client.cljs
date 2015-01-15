@@ -7,7 +7,7 @@
 
 (defn search [search-query call-back]
   (let [xhr (XhrIo.)
-        backend-uri (.origin js/location)]
+        backend-uri js/location.origin]
     (events/listen xhr goog.net.EventType.COMPLETE
       (fn [e]
         (call-back (transit/read json-reader (.getResponseText xhr)))))
