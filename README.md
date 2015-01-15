@@ -66,10 +66,3 @@ $ lein uberjar
 $ # TODO: dockerize
 $ # TODO: run container
 ```
-
-# BUGS
-- when reloading vagrant, provisioning doesn't get run so redis and elasticsearch contaners don't start
-  - move to upstart?
-  - convenience script to start them?
-
-- elasticsearch data gets dumped every time the elasticsearch container restarts?
