@@ -15,8 +15,8 @@ wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
 sudo su -c "chown root:root ./lein && chmod a+x ./lein"
 sudo su -c "mv ./lein /usr/local/bin/"
 
-echo "==> installing htop"
-sudo apt-get --assume-yes install htop
+echo "==> installing useful tools"
+sudo apt-get --assume-yes install htop redis-tools
 
 echo "==> setting up ElasticSearch"
 sudo docker pull dockerfile/elasticsearch
