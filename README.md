@@ -19,6 +19,14 @@ videos on [coursera](http://coursera.org).
 4. On the first run, visit `http://127.0.0.1:8080/burglar/go` to seed the db
    (it will error out ridiculously if you don't do this!)
 
+### Testing docker inside Vagrant
+```bash
+$ vagrant ssh
+$ cd /vagrant
+```
+
+Then follow the steps at [Deploying Cloujera](#deploying-cloujera)
+
 
 ### Vagrant Setup
 Forwarded ports:
@@ -41,16 +49,16 @@ To scrape another course, you need to:
 3. Find the video lecture URL
 2. Perform an http `POST http://cloujera.whatever/burglar/raid` with this
    paylod (JSON):
-   ```
+   ```json
    { "url": <video lectures URL> }
    e.g.
    { "url": "https://class.coursera.org/apcalcpart1-001/lecture" }
    ```
 
 
-## Deploy (sort of, still TODO)
+## Deploy
 
-The first time:
+### The first time:
 ```bash
 $ ssh user@cloudmachine
 $ git clone https://github.com/vise890/cloujera
@@ -58,11 +66,18 @@ $ cd cloujera
 $ sudo ./provision.sh
 ```
 
-Then, to deploy the app:
+### Deploying cloujera <a name="deploying-cloujera"></a>
+
 ```bash
 $ git pull
 $ lein cljs build once
 $ lein uberjar
-$ # TODO: dockerize
-$ # TODO: run container
+$ sudo docker build -t cloujera ./
+
+$ sudo docker run -d -P \
+   -p 80:8080 \
+   --name cloujera \
+   --link redis:redis \
+   --link elasticsearch:elasticsearch \
+   cloujera
 ```
