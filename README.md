@@ -15,6 +15,9 @@ videos on [coursera](http://coursera.org).
 3. Start the app
    `lein run`
 
+4. Visit `localhost:8080/burglar/go` to seed the db
+   (it will error out ridiculously if you don't do this!)
+
 # Vagrant
 Forwarded ports:
 - 9200 : elasticsearch http
