@@ -20,14 +20,15 @@
 
 ;; TITLE
 ;; FIXME: this feels too hacky (even for this...)
-(def course-api-endpoint "https://api.coursera.org/api/catalog.v1/courses")
-(def courses (:elements (json/parse-string
-                           (utils/cached-http-get course-api-endpoint)
-                                                  true)))
+(defn courses []
+  (let [course-api-endpoint "https://api.coursera.org/api/catalog.v1/courses"
+        courses-json (utils/cached-http-get course-api-endpoint)
+        courses (json/parse-string courses-json true)]
+    (:elements courses)))
 
 (defn- id->title [id]
   (let [right-course? #(= (:shortName %) id)
-        course (first (filter right-course? courses))]
+        course (first (filter right-course? (courses)))]
     (:name course)))
 
 ;; HTMLSoup(LecturePage) -> Course
