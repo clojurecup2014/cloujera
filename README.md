@@ -11,7 +11,7 @@ videos on [coursera](http://coursera.org).
    `vagrant up`
 
 2. Compile the clojurescript
-   `lein cljsbuild once dev`
+   `lein cljsbuild once`
 
 3. Start the app
    `lein run`
@@ -42,7 +42,7 @@ $ sudo ./provision.sh
 Then, to deploy the app:
 ```bash
 $ git pull
-$ lein cljs build once prod
+$ lein cljs build once
 $ lein uberjar
 $ # TODO: dockerize
 $ # TODO: run container
