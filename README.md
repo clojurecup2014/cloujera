@@ -16,7 +16,7 @@ videos on [coursera](http://coursera.org).
 3. Start the app
    `lein run`
 
-4. On the first run, `http://127.0.0.1:8080/burglar/go` to seed the db
+4. On the first run, visit `http://127.0.0.1:8080/burglar/go` to seed the db
    (it will error out ridiculously if you don't do this!)
 
 
