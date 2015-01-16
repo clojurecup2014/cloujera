@@ -5,11 +5,10 @@
             [clojurewerkz.elastisch.rest.document :as esd]
             [cloujera.models.video :as video]))
 
-(defn elasticsearch-url []
-  (env :elasticsearch-containter-ip))
-
 (def conn
-  (esr/connect (str (elasticsearch-url) ":9200")))
+  (let [ip (env :elasticsearch-ip)
+        port (env :elasticsearch-port)]
+    (esr/connect (str ip ":" port)))
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; PRIVATE INTERFACE

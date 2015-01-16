@@ -1,1 +1,2 @@
 (A) add support for compound search terms
+(A) check what profile lein run uses
