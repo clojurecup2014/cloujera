@@ -1,27 +1,3 @@
-# TODO
-Docker already exports this crap in the container linked with others:
-```
-REDIS_PORT=tcp://172.17.0.3:6379
-REDIS_PORT_6379_TCP=tcp://172.17.0.3:6379
-REDIS_PORT_6379_TCP_ADDR=172.17.0.3
-REDIS_PORT_6379_TCP_PORT=6379
-REDIS_PORT_6379_TCP_PROTO=tcp
-REDIS_NAME=/cloujera/redis
-ELASTICSEARCH_PORT=tcp://172.17.0.2:9200
-ELASTICSEARCH_PORT_9200_TCP=tcp://172.17.0.2:9200
-ELASTICSEARCH_PORT_9200_TCP_ADDR=172.17.0.2
-ELASTICSEARCH_PORT_9200_TCP_PORT=9200
-ELASTICSEARCH_PORT_9200_TCP_PROTO=tcp
-ELASTICSEARCH_PORT_9300_TCP=tcp://172.17.0.2:9300
-ELASTICSEARCH_PORT_9300_TCP_ADDR=172.17.0.2
-ELASTICSEARCH_PORT_9300_TCP_PORT=9300
-ELASTICSEARCH_PORT_9300_TCP_PROTO=tcp
-ELASTICSEARCH_NAME=/cloujera/elasticsearch
-ELASTICSEARCH_ENV_JAVA_HOME=/usr/lib/jvm/java-7-oracle
-ELASTICSEARCH_ENV_ES_PKG_NAME=elasticsearch-1.4.1
-```
-- investigate if I can use `ELASTICSEARCH_PORT` and `REDIS_PORT`
-
 # Cloujera
 
 Cloujera lets you do a fine-grained search for spoken words in Coursera's
@@ -41,7 +17,7 @@ videos on [coursera](http://coursera.org).
    `lein run`
 
 4. On the first run, visit `http://127.0.0.1:8080/burglar/go` to seed the db
-   (it will error out ridiculously if you don't do this!)
+   (it will error out ridiculously with an `IndexMissingException` if you don't do this!)
 
 
 ### Testing dockerized cloujera inside Vagrant
@@ -127,3 +103,4 @@ Visit `http://localhost:9200/, you should see `status: 200`
 
 # BUGS
 - `lein run` doesn't give any output initially
+- `lein run` doens't reload
