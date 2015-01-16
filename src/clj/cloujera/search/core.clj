@@ -6,10 +6,11 @@
             [environ.core :refer [env]]
             [cloujera.models.video :as video]))
 
-(def conn
-  (let [host (env :elasticsearch-host)
-        port (env :elasticsearch-port)]
-    (esr/connect (str host ":" port))))
+(defn conn []
+  (let [elasticsearch-tcp-uri (env :elasticsearch-port)
+        elasticsearch-uri (.replaceAll elasticsearch-tcp-uri
+                                       "^tcp:" "http:")]
+    (esr/connect elasticsearch-uri)))
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; PRIVATE INTERFACE
@@ -38,15 +39,15 @@
 
 (defn save [video]
   (let [identifier (generate-id video)]
-    (esd/put conn "videos" "video" identifier video) video))
+    (esd/put (conn) "videos" "video" identifier video) video))
 
 
 (defn term-matching [term]
-  (extract-results (esd/search conn "videos" "video"
+  (extract-results (esd/search (conn) "videos" "video"
                                :query (q/match :transcript term)
                                :highlight {:fields {:transcript {}}})))
 
 (defn all []
-  (extract-results (esd/search conn "videos" "video" :query (q/match-all {}))))
+  (extract-results (esd/search (conn) "videos" "video" :query (q/match-all {}))))
 
 
