@@ -49,7 +49,7 @@ videos on [coursera](http://coursera.org).
 $ vagrant ssh
 $ cd /vagrant
 $ source ./scripts/export_env_variables.sh
-$ ./deploy.sh
+$ ./scripts/deploy.sh
 ```
 
 
@@ -97,7 +97,7 @@ $ sudo ./scripts/provision.sh
 ```bash
 # in the cloujera directory...
 $ source ./scripts/export_env_variables.sh
-$ ./deploy.sh
+$ ./scripts/deploy.sh
 ```
 
 ## Troubleshooting
