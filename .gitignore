@@ -14,3 +14,5 @@ dump.rdb
 .nrepl-port
 
 .vagrant
+
+.lein-env
