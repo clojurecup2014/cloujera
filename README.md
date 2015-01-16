@@ -48,9 +48,11 @@ videos on [coursera](http://coursera.org).
 ```bash
 $ vagrant ssh
 $ cd /vagrant
-$ source ./scripts/export_env_variables.sh
 $ ./scripts/deploy.sh
 ```
+
+**NOTE:** the address to access the dockerized cloujera is
+`http://127.0.0.1:8081` (see `Vagrantfile`)
 
 
 ## Scraping courses
