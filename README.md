@@ -24,7 +24,8 @@ videos on [coursera](http://coursera.org).
 ```bash
 $ vagrant ssh
 $ cd /vagrant
-$ source ./deploy.sh
+$ source ./scripts/export_env_variables.sh
+$ ./deploy.sh
 ```
 
 
@@ -63,7 +64,7 @@ To scrape another course, you need to:
 $ ssh user@cloudmachine
 $ git clone https://github.com/vise890/cloujera
 $ cd cloujera
-$ sudo ./provision.sh
+$ sudo ./scripts/provision.sh
 ```
 
 
@@ -71,7 +72,8 @@ $ sudo ./provision.sh
 
 ```bash
 # in the cloujera directory...
-$ source ./deploy.sh
+$ source ./scripts/export_env_variables.sh
+$ ./deploy.sh
 ```
 
 ## Troubleshooting
