@@ -6,9 +6,9 @@
             [cloujera.models.video :as video]))
 
 (def conn
-  (let [ip (env :elasticsearch-ip)
+  (let [host (env :elasticsearch-host)
         port (env :elasticsearch-port)]
-    (esr/connect (str ip ":" port)))
+    (esr/connect (str host ":" port)))
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; PRIVATE INTERFACE
