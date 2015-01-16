@@ -3,12 +3,13 @@
             [clojurewerkz.elastisch.query :as q]
             [clojurewerkz.elastisch.rest :as esr]
             [clojurewerkz.elastisch.rest.document :as esd]
+            [environ.core :refer [env]]
             [cloujera.models.video :as video]))
 
 (def conn
   (let [host (env :elasticsearch-host)
         port (env :elasticsearch-port)]
-    (esr/connect (str host ":" port)))
+    (esr/connect (str host ":" port))))
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; PRIVATE INTERFACE
