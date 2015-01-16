@@ -53,14 +53,6 @@ $ ./scripts/deploy.sh
 ```
 
 
-### Vagrant Setup
-Forwarded ports:
-- 9200 : elasticsearch http
-- 9300 : elasticsearch
-- 6379 : redis
-
-So you can use redis with `redis-cli` for example....
-
 ## Scraping courses
 
 Visiting `http://cloujera.whatever/burglar/go` scrapes some 10 courses to get
@@ -71,19 +63,21 @@ To scrape another course, you need to:
    `https://api.coursera.org/api/catalog.v1/sessions` and choose a course
 1. Sign up for the course and agree to honor code **manually** for the
    `vise890+cloujera@gmail.com` user
-3. Find the video lecture URL
+3. Find the video lecture URL (`videoLecturesURL`)
 2. Perform an http `POST http://cloujera.whatever/burglar/raid` with this
    paylod (JSON):
    ```json
-   { "url": <video lectures URL> }
-   e.g.
+   { "url": videoLecturesURL }
+   ```
+   For example:
+   ```json
    { "url": "https://class.coursera.org/apcalcpart1-001/lecture" }
    ```
 
 
-## Deploy
+## Deployment
 
-### The first time:
+### Provisioning (The first time)
 ```bash
 $ ssh user@cloudmachine
 $ git clone https://github.com/vise890/cloujera
@@ -96,18 +90,18 @@ $ sudo ./scripts/provision.sh
 
 ```bash
 # in the cloujera directory...
-$ source ./scripts/export_env_variables.sh
 $ ./scripts/deploy.sh
 ```
 
+
 ## Troubleshooting
 
-Ensure that all the containers are running
+Ensure that all the containers are running:
 ```bash
 $ vagrant ssh
 $ sudo docker ps -a
 ```
-You should see redis, elasticsearch and cloujera running
+You should see `redis`, `elasticsearch` and `cloujera` running
 
 
 ### Checking the cloujera logs
