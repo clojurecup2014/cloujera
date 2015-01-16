@@ -124,3 +124,6 @@ Visit `http://localhost:9200/, you should see `status: 200`
 
 `redis-cli` will drop you into a redis shell. Some useful commands are:
 `INFO`, `MONITOR`, `HELP`, `HELP @server`.
+
+# BUGS
+- `lein run` doesn't give any output initially
