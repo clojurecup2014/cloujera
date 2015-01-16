@@ -9,11 +9,16 @@
 (defn- soup->_link
   "gets the course._link from an HTML soup of the lecture page"
   [soup]
+  {:pre [(utils/not-nil? soup)]}
   (let [attr :data-lecture-coursebase
-        tag (html/select soup [:div (html/attr-has attr)])]
-        (utils/get-attr tag attr)))
+        tag (html/select soup [:div (html/attr-has attr)])
+        _link (utils/get-attr tag attr)]
+    (if (nil? _link)
+      (throw "unable to extract course _link from HTML soup of lecture page")
+      _link)))
 
 (defn- _link->id [_link]
+  {:pre [(utils/not-nil? _link)]}
   (let [url-tokens (string/split _link #"/")
         session-token (last url-tokens)]
     (first (string/split session-token #"-"))))
@@ -27,12 +32,14 @@
     (:elements courses)))
 
 (defn- id->title [id]
+  {:pre [(utils/not-nil? id)]}
   (let [right-course? #(= (:shortName %) id)
         course (first (filter right-course? (courses)))]
     (:name course)))
 
 ;; HTMLSoup(LecturePage) -> Course
 (defn soup->course [soup]
+  {:pre [(utils/not-nil? soup)]}
   (let [_link (soup->_link soup)
         id (_link->id _link)
         c {:id id

@@ -4,6 +4,8 @@
 
 (def course-api-endpoint "https://api.coursera.org/api/catalog.v1/courses")
 
+(defn not-nil? [x] (not (nil? x)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defn get-body [url]
   (:body (http/get url)))
