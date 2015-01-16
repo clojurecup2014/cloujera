@@ -24,7 +24,7 @@ videos on [coursera](http://coursera.org).
 ```bash
 $ vagrant ssh
 $ cd /vagrant
-$ ./deploy.sh
+$ source ./deploy.sh
 ```
 
 
@@ -71,7 +71,7 @@ $ sudo ./provision.sh
 
 ```bash
 # in the cloujera directory...
-$ ./deploy.sh
+$ source ./deploy.sh
 ```
 
 ## Troubleshooting
