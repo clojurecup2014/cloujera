@@ -11,9 +11,7 @@ export ELASTICSEARCH_CONTAINER_IP=$(sudo docker inspect --format='{{.NetworkSett
 export REDIS_CONTAINER_IP=$(sudo docker inspect --format='{{.NetworkSettings.IPAddress}}' redis)
 
 echo "==> Removing existing cloujera container"
-# FIXME: i don't know if this actually works
-container_id=$(sudo docker ps -qa --filter name=$CLOUJERA_CONTAINER_NAME)
-sudo docker rm "$container_id" || true
+sudo docker rm -f cloujera || true
 
 echo "==> pulling most recent version (git)"
 git checkout .
