@@ -10,7 +10,11 @@ echo "==> Removing existing cloujera container"
 sudo docker rm -f $cloujera_container_name || true
 
 echo "==> pulling most recent version (git)"
-git checkout .
+# FIXME: it would be nice to checkout to avoid weird
+# stuff happening, but it's really easy to run this
+# script fortest in the vagrant VM in /vagrant
+# and lose work this way...
+# git checkout .
 git pull
 
 echo "==> Building CLJS"
