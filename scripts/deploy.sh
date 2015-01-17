@@ -27,8 +27,9 @@ echo "==> Building container"
 sudo docker build -t $cloujera_container_name ./
 
 echo "==> Running container"
-sudo docker run -d -P \
-   -p 80:8080 \
+sudo docker run \
+   --detach \
+   --publish 80:8080 \
    --name $cloujera_container_name \
    --link redis:redis \
    --link elasticsearch:elasticsearch \

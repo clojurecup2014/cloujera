@@ -20,8 +20,19 @@ sudo apt-get --assume-yes install htop redis-tools
 
 echo "==> setting up ElasticSearch"
 sudo docker pull dockerfile/elasticsearch
-sudo docker run --name elasticsearch --restart=always -d -p 9200:9200 -p 9300:9300 dockerfile/elasticsearch
+sudo docker run \
+   --name elasticsearch \
+   --detach \
+   --restart=always \
+   --publish 9200:9200 \
+   --publish 9300:9300 \
+   dockerfile/elasticsearch
 
 echo "==> setting up REDIS"
 sudo docker pull dockerfile/redis
-sudo docker run --name redis --restart=always -d -p 6379:6379 dockerfile/redis
+sudo docker run \
+   --name redis \
+   --detach \
+   --restart=always \
+   --publish 6379:6379 \
+   dockerfile/redis
