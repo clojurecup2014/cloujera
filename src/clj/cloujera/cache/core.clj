@@ -8,15 +8,15 @@
         redis-uri (.replaceAll redis-tcp-uri
                                "^tcp://" "")
         [host port] (string/split redis-uri #":")]
-    {:spec {:host host
-            :port (Integer. port)}}))
-(defmacro wcar* [& body] `(redis/wcar conn ~@body))
+    {:host host
+     :port (Integer. port)}))
 
 (defn persist [f]
-  (fn [k]
-    (wcar* (let [cached-val (redis/get k)]
-                   (if (nil? cached-val)
-                       (let [computed-val (f k)]
-                          (redis/set k computed-val)
-                          computed-val)
-                       cached-val)))))
+  (let [conn (conn)]
+    (fn [k]
+      (let [cached-val (redis/wcar conn (redis/get k))]
+        (if (nil? cached-val)
+           (let [computed-val (f k)]
+             (redis/wcar conn (redis/set k computed-val))
+             computed-val)
+           cached-val)))))
