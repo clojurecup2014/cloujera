@@ -15,7 +15,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "forwarded_port", guest: 6379, host: 6379
 
   # Cloujera port
-  config.vm.network "forwarded_port", guest: 80, host: 8081
+  config.vm.network "forwarded_port", guest: 80, host: 8081 # for docker
+  config.vm.network "forwarded_port", guest: 8080, host: 8082 # for lein run
 
   # provisioning: docker, elasticsearch, redis
   config.vm.provision "shell", path: "./scripts/provision.sh"
