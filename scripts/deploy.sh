@@ -27,8 +27,6 @@ echo "==> Building container"
 sudo docker build -t $cloujera_container_name ./
 
 echo "==> Running container"
-# FIXME: containers can't talk to each other!!!
-#        - linking seems to work?
 sudo docker run -d -P \
    -p 80:8080 \
    --name $cloujera_container_name \
