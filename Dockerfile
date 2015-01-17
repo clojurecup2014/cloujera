@@ -1,4 +1,4 @@
-FROM dockerfile/java
+FROM java:8
 
 RUN sudo apt-get --assume-yes update
 
