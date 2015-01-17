@@ -12,8 +12,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defn- get-coursera-page []
-  (cache/persist (memoize (scraper/get-protected-page username
-                                                      password))))
+  (cache/persist (scraper/get-protected-page username password)))
 
 ;; Video -> Video
 (defn- get-and-add-video-url [video]
