@@ -29,10 +29,9 @@ sudo docker run \
    dockerfile/elasticsearch
 
 echo "==> setting up REDIS"
-sudo docker pull dockerfile/redis
+sudo docker pull redis
 sudo docker run \
    --name redis \
    --detach \
    --restart=always \
-   --publish 6379:6379 \
-   dockerfile/redis
+   redis
