@@ -12,11 +12,11 @@
      :port (Integer. port)}))
 
 (defn persist [f]
-  (let [conn (conn)]
-    (fn [k]
-      (let [cached-val (redis/wcar conn (redis/get k))]
-        (if (nil? cached-val)
-           (let [computed-val (f k)]
-             (redis/wcar conn (redis/set k computed-val))
-             computed-val)
-           cached-val)))))
+  (fn [k]
+    (let [conn (conn)
+          cached-val (redis/wcar conn (redis/get k))]
+      (if (nil? cached-val)
+         (let [computed-val (f k)]
+           (redis/wcar conn (redis/set k computed-val))
+           computed-val)
+         cached-val))))
