@@ -17,7 +17,8 @@ videos on [coursera](http://coursera.org).
    `lein run`
 
 4. On the first run, visit `http://127.0.0.1:8080/burglar/go` to seed the db
-   (it will error out ridiculously with an `IndexMissingException` if you don't do this!)
+   (it will error out ridiculously with an `IndexMissingException` if you don't
+   do this!)
 
 
 ### Testing dockerized cloujera inside Vagrant
@@ -71,17 +72,18 @@ $ sudo ./scripts/provision.sh
 $ ./scripts/deploy.sh
 ```
 
-**NOTE**: `deploy.sh` pulls the most recent version of cloujera
-from the repo
+**NOTE**: `deploy.sh` pulls the most recent version of cloujera from the repo
 
 
 ## Troubleshooting
 
 Ensure that all the containers are running:
+
 ```bash
 $ vagrant ssh
 $ sudo docker ps -a
 ```
+
 You should see `redis`, `elasticsearch` and `cloujera` running
 
 
@@ -99,8 +101,8 @@ Visit `http://localhost:9200/, you should see `status: 200`
 
 ### Checking redis Running
 
-`redis-cli` will drop you into a redis shell. Some useful commands are:
-`INFO`, `MONITOR`, `HELP`, `HELP @server`.
+`redis-cli` will drop you into a redis shell. Some useful commands are: `INFO`,
+`MONITOR`, `HELP`, `HELP @server`.
 
 
 ### Dropping into a shell inside a container
