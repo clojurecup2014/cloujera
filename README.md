@@ -89,9 +89,7 @@ You should see `redis`, `elasticsearch` and `cloujera` running
 
 ```bash
 $ vagrant ssh
-
-$ sudo docker exec cloujera cat /var/cloujera_stdout.log
-$ sudo docker exec cloujera cat /var/cloujera_stderr.log
+$ sudo docker exec cloujera cat /var/cloujera.log
 ```
 
 ### Checking elasticsearch health
