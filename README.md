@@ -104,6 +104,14 @@ Visit `http://localhost:9200/, you should see `status: 200`
 `redis-cli` will drop you into a redis shell. Some useful commands are:
 `INFO`, `MONITOR`, `HELP`, `HELP @server`.
 
+
+### Dropping into a shell inside a container
+```bash
+$ vagrant ssh || ssh user@cloudbox
+$ sudo docker exec -i -t cloujera bash
+```
+
+
 # BUGS
 - `lein run` doesn't give any output initially
 - `lein run` doens't reload
