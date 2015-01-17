@@ -64,12 +64,15 @@ $ sudo ./scripts/provision.sh
 ```
 
 
-### Deploying cloujera
+### (Re)-Deploying cloujera
 
 ```bash
 # in the cloujera directory...
 $ ./scripts/deploy.sh
 ```
+
+**NOTE**: `deploy.sh` pulls the most recent version of cloujera
+from the repo
 
 
 ## Troubleshooting
