@@ -12,11 +12,12 @@
      :port (Integer. port)}))
 
 (defn persist [f]
-  (fn [k]
+  (fn [& args]
     (let [conn (conn)
-          cached-val (redis/wcar conn (redis/get k))]
+          redis-key (string/join "::" args)
+          cached-val (redis/wcar conn (redis/get redis-key))]
       (if (nil? cached-val)
-         (let [computed-val (f k)]
-           (redis/wcar conn (redis/set k computed-val))
+         (let [computed-val (apply f args)]
+           (redis/wcar conn (redis/set redis-key computed-val))
            computed-val)
          cached-val))))
