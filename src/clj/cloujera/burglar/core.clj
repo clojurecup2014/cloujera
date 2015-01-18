@@ -11,7 +11,11 @@
 (def password "letswinthisthing")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(def get-coursera-page (cache/persist (scraper/get-protected-page username password)))
+;; FIXME: this makes an HTTP call at *compile* time
+;; that means that if the session expires, you need to recompile
+;; compilation/deployment can also fail if the network is flaky
+(def get-coursera-page
+  (cache/persist (scraper/get-protected-page username password)))
 
 ;; Video -> Video
 (defn- get-and-add-video-url [video]
