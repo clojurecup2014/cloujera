@@ -11,4 +11,6 @@
       (middleware/wrap-json-body {:keywords? true :bigdecimals? true})))
 
 (defn -main []
-  (server/run-server app {:port 8080}))
+  (do
+    (println "Listening on port 8080...")
+    (server/run-server app {:port 8080})))
