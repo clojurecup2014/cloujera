@@ -22,6 +22,7 @@ videos on [coursera](http://coursera.org).
 
 
 ### Testing dockerized cloujera inside Vagrant
+
 ```bash
 $ vagrant ssh
 $ cd /vagrant
@@ -30,6 +31,21 @@ $ ./scripts/deploy.sh
 
 **NOTE:** the address to access the dockerized cloujera is
 `http://127.0.0.1:8081` (see `Vagrantfile`)
+
+
+### Testing uberjar inside Vagrant
+
+```bash
+$ vagrant ssh
+$ cd /vagrant
+$ export ELASTICSEARCH_PORT="tcp://127.0.0.1:9200"
+$ export REDIS_PORT="tcp://127.0.0.1:6379"
+$ lein uberjar
+$ java -jar target/uberjar/cloujera-*-standalone.jar
+```
+
+**NOTE:** the address to access the uberjarred cloujera running on port `8080`
+ is `http://127.0.0.1:8082` (see `Vagrantfile`)
 
 
 ## Scraping courses
