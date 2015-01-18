@@ -61,7 +61,7 @@ To scrape another course, you need to:
    `vise890+cloujera@gmail.com` user
 3. Find the video lecture URL (`videoLecturesURL`)
 2. Perform an http `POST http://cloujera.whatever/burglar/raid` with this
-   paylod (JSON):
+   payload (JSON):
 
    ```
    { "url": videoLecturesURL }
@@ -132,4 +132,4 @@ $ sudo docker exec -i -t cloujera bash
 
 # BUGS
 - `lein run` doesn't give any output initially
-- `lein run` doens't reload
+- `lein run` doesn't reload
