@@ -34,4 +34,5 @@ sudo docker run \
    --name redis \
    --detach \
    --restart=always \
+   --publish 6379:6379 \
    redis
