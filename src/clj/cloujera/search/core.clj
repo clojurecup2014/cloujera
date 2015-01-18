@@ -3,9 +3,14 @@
             [clojurewerkz.elastisch.query :as q]
             [clojurewerkz.elastisch.rest :as esr]
             [clojurewerkz.elastisch.rest.document :as esd]
+            [environ.core :refer [env]]
             [cloujera.models.video :as video]))
 
-(def conn (esr/connect "http://127.0.0.1:9200"))
+(defn conn []
+  (let [elasticsearch-tcp-uri (env :elasticsearch-port)
+        elasticsearch-uri (.replaceAll elasticsearch-tcp-uri
+                                       "^tcp:" "http:")]
+    (esr/connect elasticsearch-uri)))
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; PRIVATE INTERFACE
@@ -34,15 +39,15 @@
 
 (defn save [video]
   (let [identifier (generate-id video)]
-    (esd/put conn "videos" "video" identifier video) video))
+    (esd/put (conn) "videos" "video" identifier video) video))
 
 
 (defn term-matching [term]
-  (extract-results (esd/search conn "videos" "video"
+  (extract-results (esd/search (conn) "videos" "video"
                                :query (q/match :transcript term)
                                :highlight {:fields {:transcript {}}})))
 
 (defn all []
-  (extract-results (esd/search conn "videos" "video" :query (q/match-all {}))))
+  (extract-results (esd/search (conn) "videos" "video" :query (q/match-all {}))))
 
 

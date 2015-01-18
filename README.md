@@ -1,96 +1,135 @@
-Cloujera
-==============
+# Cloujera
 
-Cloujera lets you do a fine-grained search for spoken words in Coursera's videos. It does this by performing full text searches on the transcripts of videos on [coursera](http://coursera.org).
-
-### Build and test Locally
-
-1. Compile the clojurescript
-`lein cljsbuild once`
-
-2. Start the app
-`lein run`
+Cloujera lets you do a fine-grained search for spoken words in Coursera's
+videos. It does this by performing full text searches on the transcripts of
+videos on [coursera](http://coursera.org).
 
 
-### Setup Elastic Search Locally
+## Local Setup
 
-Install elastic search:
+1. Bring up Vagrant (elasticsearch + redis):
+   `vagrant up`
 
-```
-brew install elasticsearch
-```
+2. Compile the clojurescript:
+   `lein cljsbuild once`
 
-Install sense which is the Graphical UI to elastic search.
-Navigate to install folder likely to be`/usr/local/Cellar/elasticsearch/1.3.2`
-This will be avilable from `http://localhost:9200/_plugin/marvel/sense/index.html`
+3. Start the app:
+   `lein run`
 
-```
-./bin/plugin -i elasticsearch/marvel/latest
+4. On the first run, visit `http://127.0.0.1:8080/burglar/go` to seed the db
+   (it will error out ridiculously with an `IndexMissingException` from
+   elasticsearch if you don't do this!)
 
-```
 
-Stop marvel becoming an agent by the following Commands
+### Testing dockerized cloujera inside Vagrant
 
-```
-echo 'marvel.agent.enabled: false' >> ./config/elasticsearch.yml
-
-```
-Run using
-```
-elasticsearch
-
+```bash
+$ vagrant ssh
+$ cd /vagrant
+$ ./scripts/deploy.sh
 ```
 
+**NOTE:** the address to access the dockerized cloujera is
+`http://127.0.0.1:8081` (see `Vagrantfile`)
 
-### Deploying to production
 
-*important* our local code references our API at 127.0.0.1:8080 but for production we want that reference to be cloujera.clojurecup.com:80 so go to `rest-client.cljs` and uncomment the appropriate line like so:
+### Testing uberjar inside Vagrant
 
-```
-#_(def ^:private uri "http://127.0.0.1:8080")
-(def ^:private uri "http://cloujera.clojurecup.com:80")
-
-```
-Now do a cljs compile with `lein cljsbuild once`
-
-then, build the uberjar locally
-
-`lein uberjar`
-
-Once you've done this you can reverse the comments in the code to go back to deving.
-(Yes, we need a config file for this, but I've parked it until later)
-
-An uberjar will magically appear in ./target
-Now scp it to the production server
-
-`scp -i ~/.ssh/id_rsa_clojurecup target/cloujera-0.1.0-SNAPSHOT-standalone.jar cloudsigma@178.22.65.147:/tmp `
-
-This will put the file in the tmp directory, now ssh to the box
-
-`ssh cloudsigma@178.22.65.147 -i ~/.ssh/id_rsa_clojurecup`
-
-and move the file from /tmp to /home/cloujera (password is in slack)
-
-`sudo mv /tmp/cloujera-0.1.0-SNAPSHOT-standalone.jar /home/cloujera`
-
-become the cloujera user
-
-`sudo su cloujera`
-
-go to home and chown the file
-
-`sudo chown cloujera:cloujera cloujera-0.1.0-SNAPSHOT-standalone.jar`
-
-run it!
-
-```
-sudo start cloujera
-sudo restart cloujera
-sudo stop cloujera
+```bash
+$ vagrant ssh
+$ cd /vagrant
+$ export ELASTICSEARCH_PORT="tcp://127.0.0.1:9200"
+$ export REDIS_PORT="tcp://127.0.0.1:6379"
+$ lein uberjar
+$ java -jar target/uberjar/cloujera-*-standalone.jar
 ```
 
-check cloujera.clojurecup.com
+**NOTE:** the address to access the uberjarred cloujera running on port `8080`
+ is `http://127.0.0.1:8082` (see `Vagrantfile`)
 
-### Server Configuration
 
-... Can be found in the [SERVER CONFIGURATION README](./SERVER_CONFIGURATION_README.md)
+## Scraping courses
+
+Visiting `http://cloujera.whatever/burglar/go` scrapes some 10 courses to get
+you started;
+
+To scrape another course, you need to:
+
+0. Visit the cloujera session API
+   `https://api.coursera.org/api/catalog.v1/sessions` and choose a course
+1. Sign up for the course and agree to honor code **manually** for the
+   `vise890+cloujera@gmail.com` user
+3. Find the video lecture URL (`videoLecturesURL`)
+2. Perform an http `POST http://cloujera.whatever/burglar/raid` with this
+   payload (JSON):
+
+   ```
+   { "url": videoLecturesURL }
+   ```
+   For example:
+   ```
+   { "url": "https://class.coursera.org/apcalcpart1-001/lecture" }
+   ```
+
+
+## Deployment
+
+### Provisioning (The first time)
+```bash
+$ ssh user@cloudmachine
+$ git clone https://github.com/vise890/cloujera
+$ cd cloujera
+$ sudo ./scripts/provision.sh
+```
+
+
+### (Re)-Deploying cloujera
+
+```bash
+# in the cloujera directory...
+$ ./scripts/deploy.sh
+```
+
+**NOTE**: `deploy.sh` pulls the most recent version of cloujera from the repo
+
+
+## Troubleshooting
+
+Ensure that all the containers are running:
+
+```bash
+$ vagrant ssh
+$ sudo docker ps -a
+```
+
+You should see `redis`, `elasticsearch` and `cloujera` running
+
+
+### Checking the cloujera logs
+
+```bash
+$ vagrant ssh
+$ sudo docker exec cloujera cat /var/cloujera.log
+```
+
+### Checking elasticsearch health
+
+Visit `http://localhost:9200/`, you should see `status: 200`
+
+
+### Checking redis Running
+
+`redis-cli` will drop you into a redis shell. Some useful commands are: `INFO`,
+`MONITOR`, `HELP`, `HELP @server`.
+
+
+### Dropping into a shell inside a container
+```bash
+$ vagrant ssh || ssh user@cloudbox
+$ sudo docker exec -i -t cloujera bash
+```
+
+
+# BUGS
+- `lein run` doesn't give any output initially
+- `lein run` doesn't reload
