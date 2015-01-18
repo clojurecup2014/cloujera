@@ -10,7 +10,7 @@ videos on [coursera](http://coursera.org).
 1. Bring up Vagrant (elasticsearch + redis):
    `vagrant up`
 
-2. Compile the clojurescript:
+2. Compile the clojurescript: (Make sure you have java >1.7)
    `lein cljsbuild once`
 
 3. Start the app:
