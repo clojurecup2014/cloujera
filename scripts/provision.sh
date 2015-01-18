@@ -2,6 +2,8 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+sudo -v
+
 echo "==> upgrading system"
 sudo apt-get --assume-yes update
 sudo apt-get --assume-yes upgrade

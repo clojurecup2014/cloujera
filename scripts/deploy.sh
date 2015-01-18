@@ -2,8 +2,6 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-sudo -v
-
 echo "==> pulling most recent version (git)"
 # FIXME: it would be nice to checkout to avoid weird
 # stuff happening, but it's really easy to run this
