@@ -7,18 +7,18 @@ videos on [coursera](http://coursera.org).
 
 ## Local Setup
 
-1. Bring up Vagrant (elasticsearch + redis)
+1. Bring up Vagrant (elasticsearch + redis):
    `vagrant up`
 
-2. Compile the clojurescript
+2. Compile the clojurescript:
    `lein cljsbuild once`
 
-3. Start the app
+3. Start the app:
    `lein run`
 
 4. On the first run, visit `http://127.0.0.1:8080/burglar/go` to seed the db
-   (it will error out ridiculously with an `IndexMissingException` if you don't
-   do this!)
+   (it will error out ridiculously with an `IndexMissingException` from
+   elasticsearch if you don't do this!)
 
 
 ### Testing dockerized cloujera inside Vagrant
@@ -38,6 +38,7 @@ Visiting `http://cloujera.whatever/burglar/go` scrapes some 10 courses to get
 you started;
 
 To scrape another course, you need to:
+
 0. Visit the cloujera session API
    `https://api.coursera.org/api/catalog.v1/sessions` and choose a course
 1. Sign up for the course and agree to honor code **manually** for the
@@ -45,11 +46,12 @@ To scrape another course, you need to:
 3. Find the video lecture URL (`videoLecturesURL`)
 2. Perform an http `POST http://cloujera.whatever/burglar/raid` with this
    paylod (JSON):
-   ```json
+
+   ```
    { "url": videoLecturesURL }
    ```
    For example:
-   ```json
+   ```
    { "url": "https://class.coursera.org/apcalcpart1-001/lecture" }
    ```
 
@@ -96,7 +98,7 @@ $ sudo docker exec cloujera cat /var/cloujera.log
 
 ### Checking elasticsearch health
 
-Visit `http://localhost:9200/, you should see `status: 200`
+Visit `http://localhost:9200/`, you should see `status: 200`
 
 
 ### Checking redis Running
