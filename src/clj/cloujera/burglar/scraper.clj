@@ -30,6 +30,10 @@
 
 ;; Username -> Password -> (ProtectedUrl -> Page)
 (defn get-protected-page [username password]
+  ;; FIXME: authenticated-cookie-store is not quite a referentially transparent
+  ;; function........
+  ;; serializing the cookie store + caching it with an expiration date would be
+  ;; a possible solution
   (let [authenticated-cs ((memoize authenticated-cookie-store) username password)]
     (fn [protected-url]
       (:body (http/get protected-url {:cookie-store authenticated-cs})))))
