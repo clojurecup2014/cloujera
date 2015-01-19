@@ -26,11 +26,16 @@ videos on [coursera](http://coursera.org).
 ```bash
 $ vagrant ssh
 $ cd /vagrant
+$ source ./scripts/prod-env.sh
+$ rm ./profiles.clj # and restore with git checkout later
 $ ./scripts/deploy.sh
 ```
 
 **NOTE:** the address to access the uberjarred cloujera running on port `8080`
  is `http://127.0.0.1:8081` (see `Vagrantfile`)
+
+**FIXME**: the sourcing of prod-env.sh is just a temporary fix while we move to
+docker ....
 
 
 ## Scraping courses
@@ -72,6 +77,7 @@ $ sudo ./scripts/provision.sh
 
 ```bash
 # in the cloujera directory...
+$ source ./scripts/prod-env.sh
 $ ./scripts/deploy.sh
 ```
 

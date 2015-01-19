@@ -19,10 +19,13 @@
 
                  [cheshire "5.4.0"] ;; JSON deserializing
 
+                 [environ "1.0.0"] ;; for loading env vars
+
                  [clojurewerkz/elastisch "2.1.0"] ;; for persitance
                  [com.taoensso/carmine "2.9.0"]] ;; for caching
 
-  :plugins [[lein-cljsbuild "1.0.4"]]
+  :plugins [[lein-cljsbuild "1.0.4"]
+            [lein-environ "1.0.0"]]
 
   :min-lein-version "2.0.0"
 
