@@ -7,9 +7,6 @@ sudo -v
 cloujera_container_name="cloujera"
 cloujera_image_tag=$cloujera_container_name
 
-echo "==> Removing existing cloujera container"
-sudo docker rm -f $cloujera_container_name || true
-
 echo "==> pulling most recent version (git)"
 # FIXME: it would be nice to checkout to avoid weird
 # stuff happening, but it's really easy to run this
@@ -24,8 +21,11 @@ lein cljsbuild once
 echo "==> Uberjarring"
 lein uberjar
 
-echo "==> Building container"
+echo "==> Building new cloujera container"
 sudo docker build --tag $cloujera_image_tag ./
+
+echo "==> Removing existing cloujera container"
+sudo docker rm -f $cloujera_container_name || true
 
 echo "==> Running container"
 sudo docker run \
