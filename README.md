@@ -27,7 +27,6 @@ videos on [coursera](http://coursera.org).
 $ vagrant ssh
 $ cd /vagrant
 $ source ./scripts/prod-env.sh
-$ rm ./profiles.clj # and restore with git checkout later
 $ ./scripts/deploy.sh
 ```
 
