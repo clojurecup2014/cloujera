@@ -13,4 +13,6 @@ dump.rdb
 
 .vagrant
 
+.lein-env
+
 cloujera.log
