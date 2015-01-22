@@ -43,8 +43,12 @@
 
 
 (defn term-matching [term]
-  (extract-results (esd/search (conn) "videos" "video"
-                               :query (q/match :transcript term)
+  (extract-results (esd/search (conn)
+                               "videos"
+                               "video"
+                               :query (q/match :transcript
+                                               term
+                                               {:operator "and"})
                                :highlight {:fields {:transcript {}}})))
 
 (defn all []
