@@ -48,7 +48,7 @@
                                "video"
                                :query (q/match :transcript
                                                term
-                                               {:operator "and"})
+                                               {:type "phrase"})
                                :highlight {:fields {:transcript {}}})))
 
 (defn all []
