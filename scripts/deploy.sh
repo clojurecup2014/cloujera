@@ -7,14 +7,6 @@ sudo -v
 cloujera_container_name="cloujera"
 cloujera_image_tag=$cloujera_container_name
 
-echo "==> pulling most recent version (git)"
-# FIXME: it would be nice to checkout to avoid weird
-# stuff happening, but it's really easy to run this
-# script fortest in the vagrant VM in /vagrant
-# and lose work this way...
-# git checkout .
-git pull
-
 echo "==> Building CLJS"
 lein cljsbuild once
 
