@@ -8,8 +8,8 @@
         redis-uri (.replaceAll redis-tcp-uri
                                "^tcp://" "")
         [host port] (string/split redis-uri #":")]
-    {:host host
-     :port (Integer. port)}))
+    {:spec {:host host
+            :port (Integer. port)}}))
 
 (defn persist [f]
   (fn [k]

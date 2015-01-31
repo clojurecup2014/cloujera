@@ -5,4 +5,4 @@
 ;; we define :elasticsearch-port and :redis-port with weird names and format
 ;; because that's the the ones Docker exports in linked containers
 {:dev {:env {:elasticsearch-port "tcp://127.0.0.1:9200"
-             :redis-port "tcp://127.0.0.1:9300"}}}
+             :redis-port "tcp://127.0.0.1:6379"}}}

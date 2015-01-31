@@ -20,21 +20,30 @@ videos on [coursera](http://coursera.org).
    (it will error out ridiculously with an `IndexMissingException` from
    elasticsearch if you don't do this!);
 
+### Testing dockerized cloujera inside Vagrant VM
 
-## Testing uberjar inside Vagrant
+```bash
+$ vagrant ssh
+$ cd /vagrant
+$ ./scripts/deploy.sh
+```
+
+**NOTE:** the address to access the dockerized cloujera is
+`http://127.0.0.1:8081` (see `Vagrantfile`)
+
+
+### Testing uberjar inside Vagrant
 
 ```bash
 $ vagrant ssh
 $ cd /vagrant
 $ source ./scripts/prod-env.sh
-$ ./scripts/deploy.sh
+$ lein uberjar
+$ java -jar ./target/uberjar/cloujera-*-standalone.jar
 ```
 
 **NOTE:** the address to access the uberjarred cloujera running on port `8080`
- is `http://127.0.0.1:8081` (see `Vagrantfile`)
-
-**FIXME**: the sourcing of prod-env.sh is just a temporary fix while we move to
-docker ....
+is `http://127.0.0.1:8082` (see `Vagrantfile`)
 
 
 ## Scraping courses
@@ -76,7 +85,6 @@ $ sudo ./scripts/provision.sh
 
 ```bash
 # in the cloujera directory...
-$ source ./scripts/prod-env.sh
 $ ./scripts/deploy.sh
 ```
 
@@ -92,13 +100,14 @@ $ vagrant ssh
 $ sudo docker ps -a
 ```
 
-You should see `redis` and `elasticsearch` running
+You should see `redis`, `elasticsearch` and `cloujera` running
 
 
 ### Checking the cloujera logs
 
 ```bash
-$ cat cloujera.log
+$ vagrant ssh
+$ sudo docker exec cloujera cat /var/cloujera.log
 ```
 
 ### Checking elasticsearch health
@@ -112,6 +121,13 @@ Visit `http://localhost:9200/`, you should see `status: 200`
 `MONITOR`, `HELP`, `HELP @server`.
 
 **NOTE**: this works form the host as well as in the Vagrant VM
+
+
+### Dropping into a shell inside a container
+```bash
+$ vagrant ssh || ssh user@cloudbox
+$ sudo docker exec -i -t cloujera bash
+```
 
 
 # BUGS
