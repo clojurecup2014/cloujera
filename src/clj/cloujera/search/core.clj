@@ -24,10 +24,12 @@
 
 (defn- extract-video-result [elastic-video]
   (let [video (:_source elastic-video)
-        elastic-highlight (get-in elastic-video [:highlight :transcript])]
-    (assoc video
-           :highlighted-transcript
-           (elastic-highlight->highlighted-transcript elastic-highlight))))
+        elastic-highlight (get-in elastic-video [:highlight :transcript])
+        hl-transcript (elastic-highlight->highlighted-transcript elastic-highlight)
+        video+hl-transcript (assoc video
+                                   :highlighted-transcript
+                                   hl-transcript)]
+    (dissoc video :transcript)))
 
 (defn- extract-results [videos]
   (let [found-videos (get-in videos [:hits :hits])]
