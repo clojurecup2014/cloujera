@@ -14,7 +14,7 @@
   "The schema for a Coursera Video"
   {:id s/Str
    :title s/Str
-   :transcript s/Str
+   (s/optional-key :transcript) s/Str
    (s/optional-key :highlighted-transcript) s/Str
    :video-url s/Str
    :_link s/Str
