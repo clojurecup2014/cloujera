@@ -14,9 +14,9 @@
 (defn persist [f]
   (fn [k]
     (let [cached-val (redis/wcar (conn) (redis/get k))]
-         (if (nil? cached-val)
-           (let [computed-val (f k)]
-             (redis/wcar (conn) (redis/set k computed-val))
-             computed-val)
-           cached-val))))
+      (if (nil? cached-val)
+        (let [computed-val (f k)]
+          (redis/wcar (conn) (redis/set k computed-val))
+          computed-val)
+        cached-val))))
 

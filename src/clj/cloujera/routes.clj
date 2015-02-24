@@ -17,8 +17,8 @@
 (defroutes app-routes
   (GET  "/" [] (ring/resource-response "index.html" {:root "public"}))
   (GET "/search" [query] (if (empty? query)
-                             empty-search-error
-                             (ring/response (construct-search-response query))))
+                           empty-search-error
+                           (ring/response (construct-search-response query))))
 
   (GET "/burglar/go" [] (burglar/go))
 
