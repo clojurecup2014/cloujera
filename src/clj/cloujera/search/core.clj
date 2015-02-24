@@ -29,7 +29,7 @@
         video+hl-transcript (assoc video
                                    :highlighted-transcript
                                    hl-transcript)]
-    (dissoc video :transcript)))
+    (dissoc video+hl-transcript :transcript)))
 
 (defn- extract-results [videos]
   (let [found-videos (get-in videos [:hits :hits])]
