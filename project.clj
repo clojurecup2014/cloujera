@@ -11,6 +11,7 @@
                  [compojure "1.3.1"] ;; for routing
                  [ring "1.3.2"]
                  [ring/ring-json "0.3.1"] ;; for serializing
+                 [ring/ring-defaults "0.1.4"]
                  [http-kit "2.1.19"]
 
                  [clj-http "1.0.1"] ;; for http getting and cookieing
