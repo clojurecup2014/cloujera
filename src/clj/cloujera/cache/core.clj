@@ -1,7 +1,7 @@
 (ns cloujera.cache.core
-  (:require [taoensso.carmine :as redis]
+  (:require [clojure.string :as string]
             [environ.core :refer [env]]
-            [clojure.string :as string]))
+            [taoensso.carmine :as redis]))
 
 (defn conn []
   (let [redis-tcp-uri (env :redis-port)

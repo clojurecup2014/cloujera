@@ -1,10 +1,10 @@
 (ns cloujera.burglar.core
   (:require [cloujera.burglar.parser.core :as parser]
+            [cloujera.burglar.parser.utils :as utils]
             [cloujera.burglar.parser.video :as video-parser]
             [cloujera.burglar.scraper :as scraper]
             [cloujera.cache.core :as cache]
-            [cloujera.search.core :as search]
-            [cloujera.burglar.parser.utils :as utils]))
+            [cloujera.search.core :as search]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (def username "vise890+cloujera@gmail.com")
