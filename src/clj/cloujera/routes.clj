@@ -19,7 +19,7 @@
                            empty-search-error
                            (ring/response (construct-search-response query))))
 
-  (GET "/burglar/go" [_] (fn [] (burglar/go)))
+  (GET "/burglar/go" [_] (burglar/go))
 
   (POST "/burglar/raid/:foo" {{url :url} :b} (burglar/raid-url url))
 
