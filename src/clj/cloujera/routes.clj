@@ -13,15 +13,15 @@
 
 (defroutes app-routes
 
-  (GET  "/" [] (ring/resource-response "index.html" {:root "public"}))
+  (GET  "/" [_] (ring/resource-response "index.html" {:root "public"}))
 
   (GET "/search" [query] (if (empty? query)
                            empty-search-error
                            (ring/response (construct-search-response query))))
 
-  (GET "/burglar/go" [] (burglar/go))
+  (GET "/burglar/go" [_] (fn [] (burglar/go)))
 
-  (POST "/burglar/raid" {body :body} (burglar/raid-url (:url body)))
+  (POST "/burglar/raid/:foo" {{url :url} :b} (burglar/raid-url url))
 
   (route/resources "/")
   (route/not-found "Keep movin', there ain't nothin' to see here."))
