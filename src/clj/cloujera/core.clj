@@ -1,7 +1,8 @@
 (ns cloujera.core
   (:require [cloujera.routes :as routes]
             [org.httpkit.server :as server]
-            [ring.middleware.defaults :refer [wrap-defaults api-defaults]]
+            [ring.middleware.defaults :refer [api-defaults
+                                              wrap-defaults]]
             [ring.middleware.json :as json])
   (:gen-class))
 
