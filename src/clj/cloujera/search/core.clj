@@ -52,5 +52,3 @@
 
 (defn all []
   (extract-results (esd/search (conn) "videos" "video" :query (q/match-all {}))))
-
-
