@@ -20,6 +20,7 @@ videos on [coursera](http://coursera.org).
    (it will error out ridiculously with an `IndexMissingException` from
    elasticsearch if you don't do this!);
 
+
 ### Testing dockerized cloujera inside Vagrant VM
 
 ```bash
@@ -55,7 +56,7 @@ To scrape another course, you need to:
 
 0. Visit the cloujera session API
    `https://api.coursera.org/api/catalog.v1/sessions` and choose a course
-1. Sign up for the course and agree to honor code **manually** for the
+1. Sign up for the course and agree to honour code **manually** for the
    `vise890+cloujera@gmail.com` user
 3. Find the video lecture URL (`videoLecturesURL`)
 2. Perform an http `POST http://cloujera.whatever/burglar/raid` with this
@@ -73,6 +74,7 @@ To scrape another course, you need to:
 ## Deployment
 
 ### Provisioning (The first time)
+
 ```bash
 $ ssh user@cloudmachine
 $ git clone https://github.com/vise890/cloujera
@@ -81,7 +83,7 @@ $ sudo ./scripts/provision.sh
 ```
 
 
-### (Re)-Deploying cloujera
+### (Re-)Deploying cloujera
 
 ```bash
 # in the cloujera directory...
@@ -110,14 +112,14 @@ $ vagrant ssh
 $ sudo docker logs cloujera
 ```
 
-### Checking elasticsearch health
+### Checking Elasticsearch health
 
 Visit `http://localhost:9200/`, you should see `status: 200`
 
 
-### Checking redis Running
+### Checking if Redis is running
 
-`redis-cli` will drop you into a redis shell. Some useful commands are: `INFO`,
+`redis-cli` will drop you into a Redis shell. Some useful commands are: `INFO`,
 `MONITOR`, `HELP`, `HELP @server`.
 
 **NOTE**: this works form the host as well as in the Vagrant VM
