@@ -1,6 +1,3 @@
-(A) add logging for dockerized cloujera (move to supervisor?)
-(A) add support for compound search terms
-(B) add logging for elasticsearch container
-(B) add logging for redis container
+
+
 (C) add plugin for elasticsearch administration
-check what profile lein run uses
