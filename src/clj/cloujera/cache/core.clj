@@ -1,7 +1,7 @@
 (ns cloujera.cache.core
-  (:require [taoensso.carmine :as redis]
+  (:require [clojure.string :as string]
             [environ.core :refer [env]]
-            [clojure.string :as string]))
+            [taoensso.carmine :as redis]))
 
 (defn conn []
   (let [redis-tcp-uri (env :redis-port)
@@ -14,9 +14,9 @@
 (defn persist [f]
   (fn [k]
     (let [cached-val (redis/wcar (conn) (redis/get k))]
-         (if (nil? cached-val)
-           (let [computed-val (f k)]
-             (redis/wcar (conn) (redis/set k computed-val))
-             computed-val)
-           cached-val))))
+      (if (nil? cached-val)
+        (let [computed-val (f k)]
+          (redis/wcar (conn) (redis/set k computed-val))
+          computed-val)
+        cached-val))))
 

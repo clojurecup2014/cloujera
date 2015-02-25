@@ -3,8 +3,7 @@
             [clojurewerkz.elastisch.query :as q]
             [clojurewerkz.elastisch.rest :as esr]
             [clojurewerkz.elastisch.rest.document :as esd]
-            [environ.core :refer [env]]
-            [cloujera.models.video :as video]))
+            [environ.core :refer [env]]))
 
 (defn conn []
   (let [elasticsearch-tcp-uri (env :elasticsearch-port)
@@ -48,12 +47,8 @@
   (extract-results (esd/search (conn)
                                "videos"
                                "video"
-                               :query (q/match :transcript
-                                               term
-                                               {:type "phrase"})
+                               :query (q/match :transcript term {:type "phrase"})
                                :highlight {:fields {:transcript {}}})))
 
 (defn all []
   (extract-results (esd/search (conn) "videos" "video" :query (q/match-all {}))))
-
-

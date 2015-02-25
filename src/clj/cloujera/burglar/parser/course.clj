@@ -45,4 +45,4 @@
         c {:id id
            :title (id->title id)
            :_link _link}]
-   (schema/validate video-model/Course c)))
+    (schema/validate video-model/Course c)))

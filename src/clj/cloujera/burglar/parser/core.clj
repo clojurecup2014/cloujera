@@ -1,8 +1,8 @@
 (ns cloujera.burglar.parser.core
   (:require [cloujera.burglar.parser.course :as course]
+            [cloujera.burglar.parser.utils :as utils]
             [cloujera.burglar.parser.video :as video]
-            [net.cgrand.enlive-html :as html]
-            [cloujera.burglar.parser.utils :as utils]))
+            [net.cgrand.enlive-html :as html]))
 
 ;; HTMLSoup(LecturePage) -> [HTMLSoup(Video)]
 (defn- lectures-soup->video-soups

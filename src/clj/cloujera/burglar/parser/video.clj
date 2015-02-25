@@ -35,9 +35,9 @@
 
 (defn- transcript-exists? [soup]
   {:pre [(utils/not-nil? soup)]}
-    (not (empty?
-      (html/select soup
-                   [(html/attr-contains :href "subtitle")]))))
+  (not (empty?
+        (html/select soup
+                     [(html/attr-contains :href "subtitle")]))))
 
 (defn can-index? [soup]
   {:pre [(utils/not-nil? soup)]}
@@ -63,10 +63,10 @@
   [soup]
   {:pre [(utils/not-nil? soup)]}
   (let [_link (soup->_link soup)]
-     {:id (_link->id _link)
-      :title (soup->title soup)
-      :transcript (utils/cached-http-get (_link->transcript-url _link))
-      :_link _link}))
+    {:id (_link->id _link)
+     :title (soup->title soup)
+     :transcript (utils/cached-http-get (_link->transcript-url _link))
+     :_link _link}))
 
 ;;;; URL
 ;; HTML(EmbeddedVideoPage) -> EmbeddedVideoURL
@@ -77,4 +77,4 @@
   (let [soup (html/html-snippet html)
         tag (html/select soup
                          [:source (html/attr-contains :type "video/webm")])]
-     (utils/get-attr tag :src)))
+    (utils/get-attr tag :src)))
