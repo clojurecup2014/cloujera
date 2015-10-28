@@ -2,6 +2,7 @@
   (:require [clj-http.client :as http]
             [clj-http.cookies :as cookies]))
 
+
 ;; inspiration from: https://github.com/coursera-dl/coursera/blob/master/coursera%2Fcookies.py
 (defn- authenticated-cookie-store
   "returns a cookie store that lets you get protected pages"
@@ -28,12 +29,12 @@
                             :cookie-store cs})
       cs)))
 
+(def authenticated-cs (atom nil))
 ;; Username -> Password -> (ProtectedUrl -> Page)
 (defn get-protected-page [username password]
-  ;; FIXME: authenticated-cookie-store is not quite a referentially transparent
-  ;; function........
-  ;; serializing the cookie store + caching it with an expiration date would be
-  ;; a possible solution
-  (let [authenticated-cs ((memoize authenticated-cookie-store) username password)]
-    (fn [protected-url]
-      (:body (http/get protected-url {:cookie-store authenticated-cs})))))
+  (fn [protected-url]
+    (let [cs (if (nil? @authenticated-cs)
+               (reset! authenticated-cs
+                       (authenticated-cookie-store username password))
+               @authenticated-cs)]
+      (:body (http/get protected-url {:cookie-store cs})))))
