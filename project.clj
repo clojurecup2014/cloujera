@@ -39,8 +39,6 @@
                           :output-dir "resources/public/js/out"
                           :optimizations :none
                           :source-map true}}]}
-  :main ^:skip-aot cloujera.core
+  :main cloujera.core
   :target-path "target/%s"
-  :profiles {:uberjar {:aot :all}}
-             :dev {:dependencies [[javax.servlet/servlet-api "2.5"]
-                                  [ring-mock "0.1.5"]]})
+  :profiles {:uberjar {:aot :all}})
